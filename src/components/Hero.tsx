@@ -88,11 +88,11 @@ export default function Hero() {
             </span>
           )}
         </h1>
-        <div className="mt-1 flex h-[22px] items-center text-[14px] font-medium text-[#847e78] dark:text-[#9a948b]">
+        <div className="mt-1 flex h-[22px] items-center justify-center text-[14px] font-medium text-[#847e78] dark:text-[#9a948b] md:justify-start">
           <span>{typed}</span>
           <span className="ml-0.5 inline-block h-[15px] w-[2px] animate-pulse bg-[#847e78] dark:bg-[#9a948b]" />
         </div>
-        <p className="mt-4 whitespace-pre-line text-[13.5px] leading-[1.6] text-[#5e5852] dark:text-[#c9c3ba] md:max-w-[420px] md:text-[14px]">
+        <p className="mt-4 whitespace-pre-line text-center text-[13.5px] leading-[1.6] text-[#5e5852] dark:text-[#c9c3ba] md:max-w-[420px] md:text-left md:text-[14px]">
           {content.bio}
         </p>
         <div className="mt-6 flex items-center justify-center gap-4 md:justify-start">
