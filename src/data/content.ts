@@ -60,7 +60,7 @@ export const content = {
   personal: {
     text: 'A bit about me, outside of tech.',
     links: [
-      { label: 'forget', href: '/forget' },
+      { label: 'anime', href: '/forget' },
       { label: 'perfect day', href: '/perfect-day' },
     ],
   },
