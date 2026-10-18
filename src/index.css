@@ -65,3 +65,78 @@ html.dark {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* === Photostamp cards (Forget page) === */
+/* Perforated postage-stamp edges built from radial-gradient masks. */
+
+.stamp-frame {
+  /* the perforation variables are set inline per card */
+  filter: drop-shadow(0 10px 16px rgba(62, 36, 12, 0.32));
+}
+.dark .stamp-frame {
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.55));
+}
+
+.stamp-paper {
+  /* paper body */
+  background: #f3ead7;
+  background-image:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.55), transparent 40%),
+    radial-gradient(circle at 82% 88%, rgba(120, 90, 50, 0.08), transparent 55%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(120, 90, 50, 0.018) 0 2px,
+      transparent 2px 6px
+    );
+  position: relative;
+  --p: var(--perf-size, 8px);
+  --g: var(--perf-gap, 5px);
+  --r: var(--perf-rad, 4px);
+  /* The perforation mask: a repeating radial gradient punches scalloped
+     holes along every edge, leaving a solid rectangle in the middle. */
+  -webkit-mask:
+    radial-gradient(
+      circle var(--r) at var(--p) var(--p),
+      transparent 98%,
+      #000 100%
+    )
+      calc(var(--p) * -1) calc(var(--p) * -1) /
+      calc(var(--p) * 2 + var(--g)) calc(var(--p) * 2 + var(--g)),
+    linear-gradient(#000, #000);
+  -webkit-mask-composite: source-in;
+  mask:
+    radial-gradient(
+      circle var(--r) at var(--p) var(--p),
+      transparent 98%,
+      #000 100%
+    )
+      calc(var(--p) * -1) calc(var(--p) * -1) /
+      calc(var(--p) * 2 + var(--g)) calc(var(--p) * 2 + var(--g)),
+    linear-gradient(#000, #000);
+  mask-composite: intersect;
+}
+
+.dark .stamp-paper {
+  background: #211c14;
+  background-image:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.05), transparent 40%),
+    radial-gradient(circle at 82% 88%, rgba(0, 0, 0, 0.25), transparent 55%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.02) 0 2px,
+      transparent 2px 6px
+    );
+}
+
+.stamp-paper--lg {
+  --p: 9px;
+  --g: 6px;
+  --r: 4.5px;
+  padding: 6px;
+}
+.stamp-paper--sm {
+  --p: 7px;
+  --g: 5px;
+  --r: 3.5px;
+  padding: 5px;
+}

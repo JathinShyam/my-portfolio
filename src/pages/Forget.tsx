@@ -30,14 +30,15 @@ const medalColors: Record<number, { body: string; inner: string; ring: string; t
 function MedalRosette({ rank, size }: { rank: number; size: 'lg' | 'sm' }) {
   const c = medalColors[rank];
   if (!c) return null;
-  const dims = size === 'lg' ? 'h-[104px] w-[78px] -right-5 -top-7' : 'h-[78px] w-[60px] -right-4 -top-5';
+  const dims =
+    size === 'lg' ? 'h-[112px] w-[84px] -right-6 -top-8' : 'h-[84px] w-[64px] -right-5 -top-6';
   const points =
     '40.0,4.0 44.5,10.4 50.9,5.9 53.0,13.5 60.6,11.5 59.9,19.3 67.7,20.0 64.4,27.1 71.5,30.4 66.0,36.0 71.5,41.6 64.4,44.9 67.7,52.0 59.9,52.7 60.6,60.5 53.0,58.5 50.9,66.1 44.5,61.6 40.0,68.0 35.5,61.6 29.1,66.1 27.0,58.5 19.4,60.5 20.1,52.7 12.3,52.0 15.6,44.9 8.5,41.6 14.0,36.0 8.5,30.4 15.6,27.1 12.3,20.0 20.1,19.3 19.4,11.5 27.0,13.5 29.1,5.9 35.5,10.4';
   return (
     <svg
       viewBox="0 0 80 108"
       aria-hidden="true"
-      className={`pointer-events-none absolute z-20 drop-shadow-[0_4px_6px_rgba(60,30,10,0.28)] ${dims}`}
+      className={`pointer-events-none absolute z-30 drop-shadow-[0_5px_7px_rgba(60,30,10,0.32)] ${dims}`}
     >
       <path d="M27 50 L16 104 L33 74 L40 106 L47 74 L64 104 L53 50 Z" fill={c.body} />
       <path d="M31 50 L24 96 L36 72 L40 98 L44 72 L56 96 L49 50 Z" fill={c.inner} />
@@ -58,29 +59,33 @@ function MedalRosette({ rank, size }: { rank: number; size: 'lg' | 'sm' }) {
   );
 }
 
-function PosterCard({
-  entry,
-  rotate,
-  marginTop,
-  padding,
-  captionSize,
-  showPin,
-  fixedWidth,
-  scale,
-  expanded,
-  onToggle,
-}: {
+// A paper-aging radial gradient mask used as a faint stamp background.
+// Kept subtle so the photo stays the hero of the stamp.
+
+type StampProps = {
   entry: AnimeEntry;
   rotate: number;
   marginTop?: number;
-  padding: 'podium' | 'shelf';
-  captionSize: 'lg' | 'sm';
+  size: 'podium' | 'shelf';
   showPin?: boolean;
   fixedWidth?: boolean;
   scale?: number;
-  expanded: boolean;
-  onToggle: () => void;
-}) {
+};
+
+function StampCard({ entry, rotate, marginTop, size, showPin, fixedWidth, scale }: StampProps) {
+  const perforation =
+    size === 'podium'
+      ? {
+          '--perf-size': '9px',
+          '--perf-gap': '6px',
+          '--perf-rad': '4.5px',
+        } as React.CSSProperties
+      : {
+          '--perf-size': '7px',
+          '--perf-gap': '5px',
+          '--perf-rad': '3.5px',
+        } as React.CSSProperties;
+
   return (
     <div
       className={fixedWidth ? 'min-w-0' : 'min-w-0 flex-1 basis-0'}
@@ -92,70 +97,94 @@ function PosterCard({
       }}
     >
       {showPin && (
-        <span className="relative z-10 mx-auto -mb-1 block h-3.5 w-2.5 rounded-[2px] bg-[#f4efe6] shadow-sm dark:bg-[#3a352c]">
+        <span className="relative z-20 mx-auto -mb-1 block h-3.5 w-2.5 rounded-[2px] bg-[#f4efe6] shadow-sm dark:bg-[#3a352c]">
           <span className="absolute inset-x-0 top-1/2 h-[2px] -translate-y-1/2 bg-[#d5cfc2] dark:bg-[#575043]" />
         </span>
       )}
       <div className="relative">
-        <button
-          type="button"
-          aria-expanded={expanded}
-          aria-controls={`anime-note-${entry.slug}`}
-          aria-label={`${entry.rank}. ${entry.title}`}
-          onClick={onToggle}
-          className={`block w-full cursor-pointer bg-white text-center shadow-[0_10px_16px_rgba(62,36,12,0.32)] outline-none transition-shadow duration-300 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[#4a2c16] dark:bg-[#1c1913] ${
-            padding === 'podium' ? 'p-1.5 pb-3' : 'p-1 pb-2'
-          }`}
+        {/* STAMP FRAME */}
+        <div
+          className="group relative mx-auto stamp-frame"
+          style={perforation}
         >
-          <span className="relative block aspect-[2/3] overflow-hidden bg-[#efe8dc] dark:bg-[#262219]">
-            <img
-              src={entry.image}
-              alt=""
-              loading={entry.rank <= 3 ? 'eager' : 'lazy'}
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </span>
-          <span
-            className={`mt-1 block px-1 font-handwriting text-[#2c241c] dark:text-[#e8e2d6] ${
-              captionSize === 'lg' ? 'text-[18px] leading-tight' : 'text-[14px] leading-[1.05]'
+          {/* Outer paper frame with perforated edge */}
+          <div
+            className={`relative mx-auto stamp-paper ${
+              size === 'podium' ? 'stamp-paper--lg' : 'stamp-paper--sm'
             }`}
           >
-            {padding === 'podium' ? (
-              <span className="line-clamp-2">
-                {entry.rank} · {entry.title}
-              </span>
-            ) : (
-              <>
-                <span className="block">#{entry.rank}</span>
-                <span className="line-clamp-2 block">{entry.title}</span>
-              </>
-            )}
-          </span>
-        </button>
-        {entry.rank <= 3 && <MedalRosette rank={entry.rank} size={padding === 'podium' ? 'lg' : 'sm'} />}
-      </div>
-    </div>
-  );
-}
+            {/* Inner ivory mat */}
+            <div
+              className={`relative bg-[#f6efe1] dark:bg-[#241f17] ${
+                size === 'podium' ? 'p-2.5' : 'p-1.5'
+              }`}
+            >
+              {/* Photo window with thin inner rule */}
+              <div className="relative">
+                <div
+                  className={`relative block aspect-[2/3] overflow-hidden bg-[#e8dfcc] dark:bg-[#1a1610] ring-1 ring-[#c9bda3] dark:ring-[#3a3127]`}
+                >
+                  <img
+                    src={entry.image}
+                    alt=""
+                    loading={entry.rank <= 3 ? 'eager' : 'lazy'}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                  {/* Faint vignette to mimic the embossed photo on a stamp */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 shadow-[inset_0_0_24px_rgba(60,40,15,0.25)]"
+                  />
+                  {/* Rank denomination, top-left like a stamp value */}
+                  <span
+                    className={`absolute left-1 top-1 inline-flex items-center justify-center rounded-[3px] bg-[#fdf9ee]/95 px-1.5 py-0.5 font-serif font-semibold text-[#7a1d1d] shadow-[0_1px_2px_rgba(0,0,0,0.25)] dark:bg-[#1a1610]/85 dark:text-[#e7b3b3] ${
+                      size === 'podium' ? 'text-[13px]' : 'text-[11px]'
+                    }`}
+                  >
+                    №{entry.rank}
+                  </span>
+                  {/* Postmark circle, a playful collector touch */}
+                  <span
+                    aria-hidden="true"
+                    className={`pointer-events-none absolute right-1 top-1 rounded-full border border-[#3a4a6a]/55 text-[#3a4a6a]/70 dark:border-[#9ab0d8]/45 dark:text-[#9ab0d8]/55 ${
+                      size === 'podium' ? 'h-9 w-9' : 'h-7 w-7'
+                    }`}
+                    style={{
+                      background:
+                        'repeating-linear-gradient(135deg, rgba(58,74,106,0.06) 0 2px, transparent 2px 5px)',
+                    }}
+                  />
+                </div>
+              </div>
 
-function AnimeNote({ entry }: { entry: AnimeEntry }) {
-  return (
-    <div
-      id={`anime-note-${entry.slug}`}
-      className="relative mx-auto mt-6 max-w-[560px] rounded-lg bg-[#fdf9ee] px-7 py-6 shadow-[0_12px_28px_rgba(62,36,12,0.18)] dark:bg-[#221e16] dark:shadow-[0_12px_28px_rgba(0,0,0,0.45)]"
-    >
-      <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e2b227] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-[#5c4308] shadow-sm">
-        #{entry.rank} · {entry.title}
-      </span>
-      <div className="mt-2 space-y-3">
-        {entry.paragraphs.map((p, i) => (
-          <p
-            key={i}
-            className="whitespace-pre-line text-[14.5px] leading-[1.7] text-[#4a4238] dark:text-[#d4cdc0]"
-          >
-            {p}
-          </p>
-        ))}
+              {/* Stamp caption — country/name line at the bottom */}
+              <div
+                className={`mt-1.5 flex items-center justify-center gap-1.5 px-1 ${
+                  size === 'podium' ? 'py-1' : 'py-0.5'
+                }`}
+              >
+                <span
+                  className={`h-px flex-1 bg-[#c9bda3] dark:bg-[#4a4133]`}
+                  aria-hidden="true"
+                />
+                <span
+                  className={`font-handwriting tracking-wide text-[#2c241c] dark:text-[#e8e2d6] ${
+                    size === 'podium' ? 'text-[15px] leading-tight' : 'text-[12px] leading-[1.05]'
+                  }`}
+                >
+                  {entry.title}
+                </span>
+                <span
+                  className={`h-px flex-1 bg-[#c9bda3] dark:bg-[#4a4133]`}
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Medals for the top 3 — kept, restyled to sit on the stamp corner */}
+        {entry.rank <= 3 && <MedalRosette rank={entry.rank} size={size === 'podium' ? 'lg' : 'sm'} />}
       </div>
     </div>
   );
@@ -163,8 +192,6 @@ function AnimeNote({ entry }: { entry: AnimeEntry }) {
 
 export default function Forget() {
   const [anime, setAnime] = useState<AnimeEntry[]>(fallbackAnime);
-  const [expandedSlug, setExpandedSlug] = useState<string | null>(null);
-  const [failedImg, setFailedImg] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     let cancelled = false;
@@ -195,13 +222,9 @@ export default function Forget() {
   const shelf1 = anime.slice(3, 8);
   const shelf2 = anime.slice(8);
 
-  const toggle = (slug: string) => setExpandedSlug((cur) => (cur === slug ? null : slug));
-
   const rotations = [-2.4, 1.8, -1.2, 2.2, -1.6, 1.4, -2, 2.6, -1.4, 1.6];
   const rot = (i: number) => rotations[i % rotations.length];
   const marginTop = (i: number) => [0, 4, 1, 6, 2, 5, 0, 3][i % 8];
-
-  const expandedEntry = expandedSlug ? anime.find((a) => a.slug === expandedSlug) : null;
 
   return (
     <main className="min-h-screen pb-24">
@@ -218,53 +241,28 @@ export default function Forget() {
         <p className="mb-4 text-[15px] leading-6 text-[#6b6661] dark:text-[#b3ada4]">
           Anime is my go-to escape when life gets hard and reality gets a little too heavy.
           <br />
-          I've ranked them based on how much impact they made irl and how much they made me forget.
-          I've written my thoughts on each one.
-          <br />
-          Click a card to read it.
+          I've ranked them based on how much impact they made irl and how much they made me forget —
+          pressed here like stamps in an album.
         </p>
       </div>
 
       <div className="relative px-2 pb-2">
         {/* Podium: #1 center-right, #2 left, #3 right */}
-        <div className="mx-auto flex w-full max-w-[718px] items-end justify-center gap-5 px-6 pt-6">
+        <div className="mx-auto flex w-full max-w-[760px] items-end justify-center gap-6 px-6 pt-8">
           {second && (
-            <PosterCard
-              entry={second}
-              rotate={-2}
-              scale={0.92}
-              padding="podium"
-              captionSize="lg"
-              expanded={expandedSlug === second.slug}
-              onToggle={() => toggle(second.slug)}
-            />
+            <StampCard entry={second} rotate={-2} scale={0.92} size="podium" />
           )}
           {first && (
-            <PosterCard
-              entry={first}
-              rotate={1}
-              padding="podium"
-              captionSize="lg"
-              expanded={expandedSlug === first.slug}
-              onToggle={() => toggle(first.slug)}
-            />
+            <StampCard entry={first} rotate={1} size="podium" />
           )}
           {third && (
-            <PosterCard
-              entry={third}
-              rotate={2.4}
-              scale={0.92}
-              padding="podium"
-              captionSize="lg"
-              expanded={expandedSlug === third.slug}
-              onToggle={() => toggle(third.slug)}
-            />
+            <StampCard entry={third} rotate={2.4} scale={0.92} size="podium" />
           )}
         </div>
 
         {/* Shelf row 1: #4–#8 */}
         {shelf1.length > 0 && (
-          <div className="relative mx-auto mt-8 w-full max-w-[1040px]">
+          <div className="relative mx-auto mt-10 w-full max-w-[1040px]">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute top-[6px] z-0 h-0.5 bg-[#9a8876] dark:bg-[#a89886]"
@@ -275,16 +273,13 @@ export default function Forget() {
             />
             <div className="relative z-[1] flex items-start gap-5 px-2">
               {shelf1.map((entry, i) => (
-                <PosterCard
+                <StampCard
                   key={entry.slug}
                   entry={entry}
                   rotate={rot(i)}
                   marginTop={marginTop(i)}
-                  padding="shelf"
-                  captionSize="sm"
+                  size="shelf"
                   showPin
-                  expanded={expandedSlug === entry.slug}
-                  onToggle={() => toggle(entry.slug)}
                 />
               ))}
             </div>
@@ -293,7 +288,7 @@ export default function Forget() {
 
         {/* Shelf row 2: #9–#10 */}
         {shelf2.length > 0 && (
-          <div className="relative mx-auto mt-8 w-full max-w-[1040px]">
+          <div className="relative mx-auto mt-10 w-full max-w-[1040px]">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute top-[6px] z-0 h-0.5 bg-[#9a8876] dark:bg-[#a89886]"
@@ -304,25 +299,20 @@ export default function Forget() {
             />
             <div className="relative z-[1] flex items-start justify-center gap-5 px-2">
               {shelf2.map((entry, i) => (
-                <PosterCard
+                <StampCard
                   key={entry.slug}
                   entry={entry}
                   rotate={rot(i + 5)}
                   marginTop={marginTop(i + 5)}
-                  padding="shelf"
-                  captionSize="sm"
+                  size="shelf"
                   showPin
                   fixedWidth
-                  expanded={expandedSlug === entry.slug}
-                  onToggle={() => toggle(entry.slug)}
                 />
               ))}
             </div>
           </div>
         )}
       </div>
-
-      {expandedEntry && <AnimeNote entry={expandedEntry} />}
     </main>
   );
 }
