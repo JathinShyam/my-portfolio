@@ -65,8 +65,8 @@ export const content = {
   personal: {
     text: 'A bit about me, outside of tech.',
     links: [
-      { label: 'anime', href: '/forget' },
-      { label: 'perfect day', href: '/perfect-day' },
+      { label: 'forget', href: '/forget' },
+      { label: 'books', href: '/books' },
     ],
   },
   quote: { text: 'Simplicity is prerequisite for reliability.', author: 'Edsger W. Dijkstra' },
@@ -167,6 +167,29 @@ export const content = {
       repoUrl: 'https://github.com/JathinShyam/NordAIRemapper',
     },
   ] as Project[],
+
+  books: {
+    intro: "Everything I've finished, and the ones I keep meaning to start.",
+    read: [
+      { title: 'The Almanack of Naval Ravikant', author: 'Eric Jorgenson', genre: 'Philosophy' },
+      { title: 'She Erased Her', author: 'Himanshu Rai', genre: 'Thriller' },
+      { title: 'God Is a Gamer', author: 'Ravi Subramanian', genre: 'Thriller' },
+      { title: 'Harry Potter and the Cursed Child', author: 'J. K. Rowling, Jack Thorne, John Tiffany', genre: 'Fantasy' },
+      { title: 'Rich Dad Poor Dad', author: 'Robert T. Kiyosaki', genre: 'Finance' },
+      { title: 'Everyone Has a Story', author: 'Savi Sharma', genre: 'Fiction' },
+      { title: 'A Twist in the Tale', author: 'Jeffrey Archer', genre: 'Short stories' },
+      { title: 'Verity', author: 'Colleen Hoover', genre: 'Thriller' },
+      { title: 'The Girl in Room 105', author: 'Chetan Bhagat', genre: 'Thriller' },
+      { title: 'Deception Point', author: 'Dan Brown', genre: 'Thriller' },
+      { title: 'Robinson Crusoe', author: 'Daniel Defoe', genre: 'Classic' },
+      { title: 'The Diary of a Young Girl', author: 'Anne Frank', genre: 'Memoir' },
+    ],
+    toRead: [
+      { title: 'Autobiography of a Yogi', author: 'Paramahansa Yogananda', genre: 'Spirituality' },
+      { title: 'The Fountainhead', author: 'Ayn Rand', genre: 'Philosophy' },
+      { title: 'How to Win Friends and Influence People', author: 'Dale Carnegie', genre: 'Self-help' },
+    ],
+  },
 
   favorites: [
     'Attack on Titan',

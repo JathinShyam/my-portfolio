@@ -8,7 +8,7 @@ import BlogPost from '@/pages/BlogPost';
 import Projects from '@/pages/Projects';
 import Experience from '@/pages/Experience';
 import Resume from '@/pages/Resume';
-import PerfectDay from '@/pages/PerfectDay';
+import BooksPage from '@/pages/BooksPage';
 import Forget from '@/pages/Forget';
 
 export default function App() {
@@ -25,7 +25,7 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/resume" element={<Resume />} />
-            <Route path="/perfect-day" element={<PerfectDay />} />
+            <Route path="/books" element={<BooksPage />} />
             <Route path="/forget" element={<Forget />} />
             <Route path="*" element={<Home />} />
           </Routes>
