@@ -193,7 +193,7 @@ export default function Anime() {
           ← Back to Home
         </Link>
         <h1 className="mb-2 font-serif text-[32px] font-normal tracking-tight text-[#111111] dark:text-[#f2efe9]">
-          Anime <span className="text-[16px] font-light tracking-normal">about reality</span>
+          Anime <span className="text-[16px] font-light tracking-normal"></span>
         </h1>
         <p className="mb-12 text-[15px] leading-6 text-[#6b6661] dark:text-[#b3ada4]">
           Anime is my go-to escape when life gets hard and reality gets a little too heavy.
