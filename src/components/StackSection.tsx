@@ -71,7 +71,7 @@ function ChipIcon({ id }: { id: string }) {
 export function StackSection() {
   return (
     <section id="stack">
-      <div className="border-t border-dashed border-[#e8e4de] pt-6 dark:border-[#2e2a24]">
+      <div className="pt-6">
         <h2 className="mb-6 -ml-[2px] font-serif text-[24px] font-normal tracking-tight text-[#222222] dark:text-[#f0ede7]">
           {content.stackHeading}
         </h2>
