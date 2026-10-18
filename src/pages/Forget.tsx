@@ -196,10 +196,7 @@ export default function Forget() {
           <br />
           <span className="min-[1100px]:whitespace-nowrap">
             I've ranked them based on how much impact they made irl and how much they made me forget.
-            I've written my thoughts on each one.
           </span>
-          <br />
-          Click a card to read it.
         </p>
       </div>
 
