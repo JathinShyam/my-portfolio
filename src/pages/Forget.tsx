@@ -30,15 +30,14 @@ const medalColors: Record<number, { body: string; inner: string; ring: string; t
 function MedalRosette({ rank, size }: { rank: number; size: 'lg' | 'sm' }) {
   const c = medalColors[rank];
   if (!c) return null;
-  const dims =
-    size === 'lg' ? 'h-[112px] w-[84px] -right-6 -top-8' : 'h-[84px] w-[64px] -right-5 -top-6';
+  const dims = size === 'lg' ? 'h-[104px] w-[78px] -right-5 -top-7' : 'h-[78px] w-[60px] -right-4 -top-5';
   const points =
     '40.0,4.0 44.5,10.4 50.9,5.9 53.0,13.5 60.6,11.5 59.9,19.3 67.7,20.0 64.4,27.1 71.5,30.4 66.0,36.0 71.5,41.6 64.4,44.9 67.7,52.0 59.9,52.7 60.6,60.5 53.0,58.5 50.9,66.1 44.5,61.6 40.0,68.0 35.5,61.6 29.1,66.1 27.0,58.5 19.4,60.5 20.1,52.7 12.3,52.0 15.6,44.9 8.5,41.6 14.0,36.0 8.5,30.4 15.6,27.1 12.3,20.0 20.1,19.3 19.4,11.5 27.0,13.5 29.1,5.9 35.5,10.4';
   return (
     <svg
       viewBox="0 0 80 108"
       aria-hidden="true"
-      className={`pointer-events-none absolute z-30 drop-shadow-[0_5px_7px_rgba(60,30,10,0.32)] ${dims}`}
+      className={`pointer-events-none absolute z-20 drop-shadow-[0_4px_6px_rgba(60,30,10,0.28)] ${dims}`}
     >
       <path d="M27 50 L16 104 L33 74 L40 106 L47 74 L64 104 L53 50 Z" fill={c.body} />
       <path d="M31 50 L24 96 L36 72 L40 98 L44 72 L56 96 L49 50 Z" fill={c.inner} />
@@ -59,33 +58,27 @@ function MedalRosette({ rank, size }: { rank: number; size: 'lg' | 'sm' }) {
   );
 }
 
-// A paper-aging radial gradient mask used as a faint stamp background.
-// Kept subtle so the photo stays the hero of the stamp.
-
-type StampProps = {
+function PosterCard({
+  entry,
+  rotate,
+  marginTop,
+  padding,
+  captionSize,
+  showPin,
+  fixedWidth,
+  scale,
+  maxWidth,
+}: {
   entry: AnimeEntry;
   rotate: number;
   marginTop?: number;
-  size: 'podium' | 'shelf';
+  padding: 'podium' | 'shelf';
+  captionSize: 'lg' | 'sm';
   showPin?: boolean;
   fixedWidth?: boolean;
   scale?: number;
-};
-
-function StampCard({ entry, rotate, marginTop, size, showPin, fixedWidth, scale }: StampProps) {
-  const perforation =
-    size === 'podium'
-      ? {
-          '--perf-size': '9px',
-          '--perf-gap': '6px',
-          '--perf-rad': '4.5px',
-        } as React.CSSProperties
-      : {
-          '--perf-size': '7px',
-          '--perf-gap': '5px',
-          '--perf-rad': '3.5px',
-        } as React.CSSProperties;
-
+  maxWidth?: string;
+}) {
   return (
     <div
       className={fixedWidth ? 'min-w-0' : 'min-w-0 flex-1 basis-0'}
@@ -94,97 +87,57 @@ function StampCard({ entry, rotate, marginTop, size, showPin, fixedWidth, scale 
         marginTop,
         transformOrigin: scale ? 'bottom center' : 'top center',
         width: fixedWidth ? 'calc((100% - 5rem) / 5)' : undefined,
+        maxWidth: !fixedWidth ? maxWidth : undefined,
       }}
     >
       {showPin && (
-        <span className="relative z-20 mx-auto -mb-1 block h-3.5 w-2.5 rounded-[2px] bg-[#f4efe6] shadow-sm dark:bg-[#3a352c]">
+        <span className="relative z-10 mx-auto -mb-1 block h-3.5 w-2.5 rounded-[2px] bg-[#f4efe6] shadow-sm dark:bg-[#3a352c]">
           <span className="absolute inset-x-0 top-1/2 h-[2px] -translate-y-1/2 bg-[#d5cfc2] dark:bg-[#575043]" />
         </span>
       )}
       <div className="relative">
-        {/* STAMP FRAME */}
         <div
-          className="group relative mx-auto stamp-frame"
-          style={perforation}
+          className={`block w-full bg-white text-center shadow-[0_10px_16px_rgba(62,36,12,0.32)] dark:bg-[#1c1913] ${
+            padding === 'podium' ? 'p-1.5 pb-3' : 'p-1 pb-2'
+          }`}
         >
-          {/* Outer paper frame with perforated edge */}
-          <div
-            className={`relative mx-auto stamp-paper ${
-              size === 'podium' ? 'stamp-paper--lg' : 'stamp-paper--sm'
+          <span className="relative block aspect-[2/3] overflow-hidden bg-[#efe8dc] dark:bg-[#262219]">
+            <img
+              src={entry.image}
+              alt=""
+              loading={entry.rank <= 3 ? 'eager' : 'lazy'}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </span>
+          <span
+            className={`mt-1 block px-1 font-handwriting text-[#2c241c] dark:text-[#e8e2d6] ${
+              captionSize === 'lg' ? 'text-[18px] leading-tight' : 'text-[14px] leading-[1.05]'
             }`}
           >
-            {/* Inner ivory mat */}
-            <div
-              className={`relative bg-[#f6efe1] dark:bg-[#241f17] ${
-                size === 'podium' ? 'p-2.5' : 'p-1.5'
-              }`}
-            >
-              {/* Photo window with thin inner rule */}
-              <div className="relative">
-                <div
-                  className={`relative block aspect-[2/3] overflow-hidden bg-[#e8dfcc] dark:bg-[#1a1610] ring-1 ring-[#c9bda3] dark:ring-[#3a3127]`}
-                >
-                  <img
-                    src={entry.image}
-                    alt=""
-                    loading={entry.rank <= 3 ? 'eager' : 'lazy'}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                  />
-                  {/* Faint vignette to mimic the embossed photo on a stamp */}
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 shadow-[inset_0_0_24px_rgba(60,40,15,0.25)]"
-                  />
-                  {/* Rank denomination, top-left like a stamp value */}
-                  <span
-                    className={`absolute left-1 top-1 inline-flex items-center justify-center rounded-[3px] bg-[#fdf9ee]/95 px-1.5 py-0.5 font-serif font-semibold text-[#7a1d1d] shadow-[0_1px_2px_rgba(0,0,0,0.25)] dark:bg-[#1a1610]/85 dark:text-[#e7b3b3] ${
-                      size === 'podium' ? 'text-[13px]' : 'text-[11px]'
-                    }`}
-                  >
-                    №{entry.rank}
-                  </span>
-                  {/* Postmark circle, a playful collector touch */}
-                  <span
-                    aria-hidden="true"
-                    className={`pointer-events-none absolute right-1 top-1 rounded-full border border-[#3a4a6a]/55 text-[#3a4a6a]/70 dark:border-[#9ab0d8]/45 dark:text-[#9ab0d8]/55 ${
-                      size === 'podium' ? 'h-9 w-9' : 'h-7 w-7'
-                    }`}
-                    style={{
-                      background:
-                        'repeating-linear-gradient(135deg, rgba(58,74,106,0.06) 0 2px, transparent 2px 5px)',
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Stamp caption — country/name line at the bottom */}
-              <div
-                className={`mt-1.5 flex items-center justify-center gap-1.5 px-1 ${
-                  size === 'podium' ? 'py-1' : 'py-0.5'
-                }`}
-              >
-                <span
-                  className={`h-px flex-1 bg-[#c9bda3] dark:bg-[#4a4133]`}
-                  aria-hidden="true"
-                />
-                <span
-                  className={`font-handwriting tracking-wide text-[#2c241c] dark:text-[#e8e2d6] ${
-                    size === 'podium' ? 'text-[15px] leading-tight' : 'text-[12px] leading-[1.05]'
-                  }`}
-                >
-                  {entry.title}
-                </span>
-                <span
-                  className={`h-px flex-1 bg-[#c9bda3] dark:bg-[#4a4133]`}
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-          </div>
+            {padding === 'podium' ? (
+              <span className="line-clamp-2">
+                {entry.rank} · {entry.title}
+              </span>
+            ) : (
+              <>
+                <span className="block">#{entry.rank}</span>
+                <span className="line-clamp-2 block">{entry.title}</span>
+              </>
+            )}
+          </span>
         </div>
-
-        {/* Medals for the top 3 — kept, restyled to sit on the stamp corner */}
-        {entry.rank <= 3 && <MedalRosette rank={entry.rank} size={size === 'podium' ? 'lg' : 'sm'} />}
+        {entry.rank <= 3 && <MedalRosette rank={entry.rank} size={padding === 'podium' ? 'lg' : 'sm'} />}
+        {entry.rank === 1 && (
+          <span
+            className="absolute -bottom-2.5 left-1/2 z-20 -translate-x-1/2 bg-[#c62828] px-4 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-sm"
+            style={{
+              clipPath:
+                'polygon(8px 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0 50%)',
+            }}
+          >
+            <span className="block max-w-[150px] truncate">{entry.title}</span>
+          </span>
+        )}
       </div>
     </div>
   );
@@ -238,31 +191,55 @@ export default function Forget() {
         <h1 className="mb-2 font-serif text-[32px] font-normal tracking-tight text-[#111111] dark:text-[#f2efe9]">
           Forget <span className="text-[16px] font-light tracking-normal">about reality</span>
         </h1>
-        <p className="mb-4 text-[15px] leading-6 text-[#6b6661] dark:text-[#b3ada4]">
+        <p className="mb-12 text-[15px] leading-6 text-[#6b6661] dark:text-[#b3ada4]">
           Anime is my go-to escape when life gets hard and reality gets a little too heavy.
           <br />
-          I've ranked them based on how much impact they made irl and how much they made me forget —
-          pressed here like stamps in an album.
+          <span className="min-[1100px]:whitespace-nowrap">
+            I've ranked them based on how much impact they made irl and how much they made me forget.
+            I've written my thoughts on each one.
+          </span>
+          <br />
+          Click a card to read it.
         </p>
       </div>
 
       <div className="relative px-2 pb-2">
         {/* Podium: #1 center-right, #2 left, #3 right */}
-        <div className="mx-auto flex w-full max-w-[760px] items-end justify-center gap-6 px-6 pt-8">
+        <div className="mx-auto flex w-full max-w-[718px] items-end justify-center gap-5 px-6 pt-6">
           {second && (
-            <StampCard entry={second} rotate={-2} scale={0.92} size="podium" />
+            <PosterCard
+              entry={second}
+              rotate={-2}
+              scale={0.92}
+              padding="podium"
+              captionSize="lg"
+              maxWidth="200px"
+            />
           )}
           {first && (
-            <StampCard entry={first} rotate={1} size="podium" />
+            <PosterCard
+              entry={first}
+              rotate={1}
+              padding="podium"
+              captionSize="lg"
+              maxWidth="230px"
+            />
           )}
           {third && (
-            <StampCard entry={third} rotate={2.4} scale={0.92} size="podium" />
+            <PosterCard
+              entry={third}
+              rotate={2.4}
+              scale={0.92}
+              padding="podium"
+              captionSize="lg"
+              maxWidth="200px"
+            />
           )}
         </div>
 
         {/* Shelf row 1: #4–#8 */}
         {shelf1.length > 0 && (
-          <div className="relative mx-auto mt-10 w-full max-w-[1040px]">
+          <div className="relative mx-auto mt-8 w-full max-w-[1088px]">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute top-[6px] z-0 h-0.5 bg-[#9a8876] dark:bg-[#a89886]"
@@ -273,12 +250,13 @@ export default function Forget() {
             />
             <div className="relative z-[1] flex items-start gap-5 px-2">
               {shelf1.map((entry, i) => (
-                <StampCard
+                <PosterCard
                   key={entry.slug}
                   entry={entry}
                   rotate={rot(i)}
                   marginTop={marginTop(i)}
-                  size="shelf"
+                  padding="shelf"
+                  captionSize="sm"
                   showPin
                 />
               ))}
@@ -288,7 +266,7 @@ export default function Forget() {
 
         {/* Shelf row 2: #9–#10 */}
         {shelf2.length > 0 && (
-          <div className="relative mx-auto mt-10 w-full max-w-[1040px]">
+          <div className="relative mx-auto mt-8 w-full max-w-[1088px]">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute top-[6px] z-0 h-0.5 bg-[#9a8876] dark:bg-[#a89886]"
@@ -299,12 +277,13 @@ export default function Forget() {
             />
             <div className="relative z-[1] flex items-start justify-center gap-5 px-2">
               {shelf2.map((entry, i) => (
-                <StampCard
+                <PosterCard
                   key={entry.slug}
                   entry={entry}
                   rotate={rot(i + 5)}
                   marginTop={marginTop(i + 5)}
-                  size="shelf"
+                  padding="shelf"
+                  captionSize="sm"
                   showPin
                   fixedWidth
                 />
