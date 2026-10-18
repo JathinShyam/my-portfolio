@@ -44,7 +44,7 @@ export const content = {
     title: 'Shyam Kumar Reddy Kalla',
     description: 'A little corner on the Internet that speaks about me.',
   },
-  name: 'Shyam',
+  name: 'Shyam Kumar Reddy K',
   verified: true,
   tagline: 'SDE 1 @ AltiusHub',
   taglines: ['SDE 1 @ AltiusHub', 'LeetCode Knight (Top 5%)', 'Tech Nerd'],
