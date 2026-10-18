@@ -4,7 +4,7 @@ import type { Project } from '@/data/content';
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="group relative flex min-h-[208px] flex-col rounded-2xl border border-[#e8e4de] bg-[#fcfbf9] p-[18px] transition-all duration-300 hover:border-[#d8d2cb] hover:bg-white dark:border-[#2e2a24] dark:bg-[#171410] dark:hover:border-[#4a453b] dark:hover:bg-[#1c1913]">
-      <h3 className="mb-3 text-[17px] font-medium leading-snug text-[#1a1a1a] transition-colors duration-200 group-hover:text-[#111111] dark:text-[#f2efe9]">
+      <h3 className="mb-3 text-[17px] font-medium leading-snug text-[#1a1a1a] dark:text-[#f2efe9]">
         {project.name}
       </h3>
       <p className="mb-5 text-[13.5px] leading-[1.65] text-[#5e5852] dark:text-[#c9c3ba]">
