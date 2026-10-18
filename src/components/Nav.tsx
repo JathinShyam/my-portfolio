@@ -7,7 +7,7 @@ const links = [
   { label: 'Home', to: '/' },
   { label: 'Writings', to: '/blogs' },
   { label: 'Projects', to: '/projects' },
-  { label: 'Experience', to: '/experience' },
+  { label: 'Work', to: '/experience' },
 ];
 
 export default function Nav() {
