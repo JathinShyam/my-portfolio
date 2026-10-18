@@ -77,4 +77,30 @@ html.dark {
   }
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+::view-transition-new(root) {
+  animation: liquid-reveal 520ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes liquid-reveal {
+  0% {
+    clip-path: circle(0% at var(--theme-transition-x, 50%) var(--theme-transition-y, 50%));
+  }
+  100% {
+    clip-path: circle(150% at var(--theme-transition-x, 50%) var(--theme-transition-y, 50%));
+  }
+}
+
 

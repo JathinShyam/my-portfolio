@@ -1,37 +1,71 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
+
+type Theme = 'light' | 'dark';
 
 export function useTheme() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window === 'undefined') return 'light';
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === 'undefined') return 'dark';
     const stored = localStorage.getItem('theme');
     if (stored === 'light' || stored === 'dark') return stored;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return 'dark';
   });
 
+  const pendingRef = useRef<Theme | null>(null);
+
   useEffect(() => {
+    if (pendingRef.current) {
+      pendingRef.current = null;
+      return;
+    }
     document.documentElement.classList.toggle('dark', theme === 'dark');
   }, [theme]);
 
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    const onChange = (e: MediaQueryListEvent) => {
-      if (!localStorage.getItem('theme')) setTheme(e.matches ? 'dark' : 'light');
-    };
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
+  const applyTheme = useCallback((next: Theme) => {
+    document.documentElement.classList.toggle('dark', next === 'dark');
+    setTheme(next);
+    try {
+      localStorage.setItem('theme', next);
+    } catch {
+      /* storage unavailable */
+    }
   }, []);
 
-  const toggle = useCallback(() => {
-    setTheme((prev) => {
-      const next = prev === 'dark' ? 'light' : 'dark';
-      try {
-        localStorage.setItem('theme', next);
-      } catch {
-        /* storage unavailable */
-      }
-      return next;
-    });
-  }, []);
+  const toggle = useCallback(
+    (origin?: { x: number; y: number }) => {
+      setTheme((prev) => {
+        const next: Theme = prev === 'dark' ? 'light' : 'dark';
+        pendingRef.current = next;
+
+        const doc = document as Document & {
+          startViewTransition?: (cb: () => void) => { finished: Promise<void> };
+        };
+
+        const apply = () => applyTheme(next);
+
+        if (
+          doc.startViewTransition &&
+          origin &&
+          !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ) {
+          document.documentElement.style.setProperty(
+            '--theme-transition-x',
+            `${origin.x}px`
+          );
+          document.documentElement.style.setProperty(
+            '--theme-transition-y',
+            `${origin.y}px`
+          );
+          const transition = doc.startViewTransition(apply);
+          transition.finished.catch(() => apply());
+        } else {
+          apply();
+        }
+
+        return next;
+      });
+    },
+    [applyTheme]
+  );
 
   return { theme, toggle };
 }

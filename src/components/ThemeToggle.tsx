@@ -7,7 +7,10 @@ export default function ThemeToggle() {
 
   return (
     <button
-      onClick={toggle}
+      onClick={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        toggle({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+      }}
       aria-label="Toggle dark mode"
       className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-full text-[#6b6661] transition-colors duration-200 hover:text-[#111111] focus-visible:ring-2 focus-visible:ring-black/5 dark:text-[#b3ada4] dark:hover:text-[#f2efe9] dark:focus-visible:ring-white/10"
     >
