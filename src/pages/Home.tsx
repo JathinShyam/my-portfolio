@@ -49,6 +49,9 @@ export default function Home() {
 
       <Separator />
 
+      <StackSection />
+      <Separator />
+
       {latestPosts.length > 0 && (
         <>
           <WritingsList posts={latestPosts} viewAllTo="/blogs" />
@@ -112,8 +115,6 @@ export default function Home() {
         </>
       )}
 
-      <StackSection />
-      <Separator />
       <QuoteBlock />
     </div>
   );
