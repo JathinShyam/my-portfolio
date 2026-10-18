@@ -110,7 +110,7 @@ function PosterCard({
             />
           </span>
           <span
-            className={`mt-1 block px-1 font-handwriting text-[#2c241c] dark:text-[#e8e2d6] ${
+            className={`mt-1 block px-1 font-handwriting text-[#2c241c] ${
               captionSize === 'lg' ? 'text-[18px] leading-tight' : 'text-[14px] leading-[1.05]'
             }`}
           >
