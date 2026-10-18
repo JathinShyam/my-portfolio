@@ -105,21 +105,21 @@ export const content = {
       name: 'SmartMigrate',
       description:
         'A custom Django management command that makes schema migrations resilient in branching and merging workflows. It identifies migrations with a hybrid key (app + cleaned name + content hash, ignoring the dependencies block), so renamed or renumbered files are still matched. Built to fix cross-environment migration drift in GitHub Actions deployments (21 edge cases handled), it cut DB migration time by 95%.',
-      tags: ['Python', 'Django', 'PostgreSQL', 'GitHub Actions', 'Migrations', 'CI/CD'],
+      tags: ['Python', 'Django', 'PostgreSQL', 'CI/CD'],
       repoUrl: 'https://github.com/JathinShyam/SmartMigrate',
     },
     {
       name: 'Bhagavad Gita',
       description:
         'An offline-first, four-language (Telugu, English, Hindi, Tamil) scripture app covering all 18 chapters and 19 topic categories, with streaks, saved verses and share cards — no backend, no account. Includes a rolling 7-day local-notification scheduler with tap-to-verse deep links and a native Android home-screen widget (Kotlin AppWidget with a JS bridge) showing a deterministic verse of the day, guarded by Jest catalog-integrity tests and a GitHub Actions release-APK pipeline.',
-      tags: ['TypeScript', 'React Native', 'Expo', 'Offline-first', 'Android', 'GitHub Actions'],
+      tags: ['TypeScript', 'React Native', 'Expo', 'Android'],
       repoUrl: 'https://github.com/JathinShyam/BagavadGitaApp',
     },
     {
       name: 'Keyforge',
       description:
         "Remaps the OnePlus Nord 5's Plus (AI) key into custom single, double and long-press shortcuts — no root, no Magisk, no cloud. Kotlin and Jetpack Compose with Hilt, Room and DataStore, plus an optional floating action menu.",
-      tags: ['Kotlin', 'Jetpack Compose', 'Android', 'Github Actions'],
+      tags: ['Kotlin', 'Jetpack Compose', 'Android'],
       repoUrl: 'https://github.com/JathinShyam/NordAIRemapper',
     },
   ] as Project[],
