@@ -9,7 +9,7 @@ import Projects from '@/pages/Projects';
 import Experience from '@/pages/Experience';
 import Resume from '@/pages/Resume';
 import BooksPage from '@/pages/BooksPage';
-import Forget from '@/pages/Forget';
+import Anime from '@/pages/Anime';
 
 export default function App() {
   return (
@@ -26,7 +26,7 @@ export default function App() {
             <Route path="/experience" element={<Experience />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/books" element={<BooksPage />} />
-            <Route path="/forget" element={<Forget />} />
+            <Route path="/anime" element={<Anime />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
