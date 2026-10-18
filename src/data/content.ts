@@ -75,7 +75,8 @@ export const content = {
       year: '2026',
       readTime: '8 min',
       title: "I Wanted My OnePlus Nord 5 Side Button to Do My Shortcuts — Here's What It Took",
-      url: 'https://medium.com/@jathinshyam/i-wanted-my-oneplus-nord-5-side-button-to-do-my-shortcuts-here-s-what-it-took',
+      url: 'https://medium.com/@jathinshyam/i-wanted-my-oneplus-nord-5-side-button-to-do-my-shortcuts-heres-what-it-took-506b6cb53f25',
+      
       excerpt:
         'How OxygenOS swallows the Plus Key, why a normal accessibility remapper cannot see it, and what it took to build one that does.',
     },
@@ -84,7 +85,7 @@ export const content = {
       year: '2026',
       readTime: '6 min',
       title: 'The Invisible Auction: How Third-Party Ads Power (and Personalize) Your Apps and Websites',
-      url: 'https://medium.com/@jathinshyam/the-invisible-auction-how-third-party-ads-power-and-personalize-your-apps-and-websites',
+      url: 'https://medium.com/@jathinshyam/the-invisible-auction-how-third-party-ads-power-and-personalize-your-apps-and-websites-dc5ed7b3cbc4',
       excerpt:
         'A plain-English look at real-time bidding, what data actually leaves your device, and why the same app shows different ads to different people.',
     },
