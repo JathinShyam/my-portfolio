@@ -171,6 +171,9 @@ export const content = {
   books: {
     intro: "Everything I've finished.",
     read: [
+      { title: 'Autobiography of a Yogi', author: 'Paramahansa Yogananda', genre: 'Spirituality' },
+      { title: 'The Fountainhead', author: 'Ayn Rand', genre: 'Philosophy' },
+      { title: 'How to Win Friends and Influence People', author: 'Dale Carnegie', genre: 'Self-help' },
       { title: 'The Almanack of Naval Ravikant', author: 'Eric Jorgenson', genre: 'Philosophy' },
       { title: 'She Erased Her', author: 'Himanshu Rai', genre: 'Thriller' },
       { title: 'God Is a Gamer', author: 'Ravi Subramanian', genre: 'Thriller' },
@@ -183,9 +186,6 @@ export const content = {
       { title: 'Deception Point', author: 'Dan Brown', genre: 'Thriller' },
       { title: 'Robinson Crusoe', author: 'Daniel Defoe', genre: 'Classic' },
       { title: 'The Diary of a Young Girl', author: 'Anne Frank', genre: 'Memoir' },
-      { title: 'Autobiography of a Yogi', author: 'Paramahansa Yogananda', genre: 'Spirituality' },
-      { title: 'The Fountainhead', author: 'Ayn Rand', genre: 'Philosophy' },
-      { title: 'How to Win Friends and Influence People', author: 'Dale Carnegie', genre: 'Self-help' },
     ],
   },
 
