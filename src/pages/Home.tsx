@@ -4,6 +4,7 @@ import WritingsList from '@/components/WritingsList';
 import ExperienceCard from '@/components/ExperienceCard';
 import ProjectCard from '@/components/ProjectCard';
 import QuoteBlock from '@/components/QuoteBlock';
+import { StackSection } from '@/components/StackSection';
 import Separator from '@/components/Separator';
 import { Link } from 'react-router-dom';
 import content from '@/data/content';
@@ -111,6 +112,8 @@ export default function Home() {
         </>
       )}
 
+      <StackSection />
+      <Separator />
       <QuoteBlock />
     </div>
   );

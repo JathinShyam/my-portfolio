@@ -34,6 +34,11 @@ export type Project = {
   repoUrl: string;
 };
 
+export type StackRow = {
+  label: string;
+  items: { name: string; icon: string }[];
+};
+
 export const content = {
   meta: {
     title: 'Shyam Kumar Reddy Kalla',
@@ -65,6 +70,45 @@ export const content = {
     ],
   },
   quote: { text: 'Simplicity is prerequisite for reliability.', author: 'Edsger W. Dijkstra' },
+  stackHeading: 'Stack',
+  stack: [
+    { label: '01 Language', items: [
+      { name: 'Python', icon: 'python' },
+      { name: 'Go', icon: 'go' },
+      { name: 'TypeScript', icon: 'typescript' },
+      { name: 'JavaScript', icon: 'javascript' },
+      { name: 'Java', icon: 'java' },
+      { name: 'Kotlin', icon: 'kotlin' },
+      { name: 'SQL', icon: 'sql' },
+    ] },
+    { label: '02 Backend', items: [
+      { name: 'Django', icon: 'django' },
+      { name: 'Django REST Framework', icon: 'drf' },
+      { name: 'Celery', icon: 'celery' },
+      { name: 'Celery Beat', icon: 'celerybeat' },
+      { name: 'Flower', icon: 'flower' },
+    ] },
+    { label: '03 Data & Infra', items: [
+      { name: 'PostgreSQL', icon: 'postgresql' },
+      { name: 'Redis', icon: 'redis' },
+      { name: 'Docker', icon: 'docker' },
+      { name: 'Kubernetes', icon: 'kubernetes' },
+      { name: 'Azure', icon: 'azure' },
+      { name: 'Prometheus', icon: 'prometheus' },
+    ] },
+    { label: '04 UI & Mobile', items: [
+      { name: 'React', icon: 'react' },
+      { name: 'React Native', icon: 'reactnative' },
+      { name: 'Expo', icon: 'expo' },
+      { name: 'Streamlit', icon: 'streamlit' },
+      { name: 'Jetpack Compose', icon: 'compose' },
+    ] },
+    { label: '05 Tooling', items: [
+      { name: 'Git', icon: 'git' },
+      { name: 'GitHub Actions', icon: 'ghactions' },
+      { name: 'Locust', icon: 'locust' },
+    ] },
+  ] as StackRow[],
   footerTagline: 'A little corner on the Internet that speaks about me.',
   resumeUrl: resumePdf,
   resumeFileName: 'Shyam_Kumar_Reddy_Kalla_Resume.pdf',
