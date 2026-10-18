@@ -1,5 +1,6 @@
 import PageHeader from '@/components/PageHeader';
 import { BookShelf } from '@/components/BookShelf';
+import { slugify } from '@/components/BookPoster';
 import { content } from '@/data/content';
 
 const chunk = <T,>(arr: T[], n: number): T[][] => {
@@ -16,7 +17,10 @@ export default function BooksPage() {
       {/* <h2 className="mb-6 font-serif text-[22px] font-normal tracking-tight text-[#222] dark:text-[#f0ede7]">Read</h2> */}
       <div className="flex flex-col gap-10">
         {chunk(content.books.read, 4).map((shelf, i) => (
-          <BookShelf key={i} books={shelf} />
+          <BookShelf
+            key={i}
+            books={shelf.map((b) => ({ ...b, cover: `/books/${slugify(b.title)}.jpg` }))}
+          />
         ))}
       </div>
     </div>

@@ -1,5 +1,6 @@
 import PageHeader from '@/components/PageHeader';
 import { BookShelf } from '@/components/BookShelf';
+import { slugify } from '@/components/BookPoster';
 import { content } from '@/data/content';
 
 const chunk = <T,>(arr: T[], n: number): T[][] => {
@@ -14,7 +15,10 @@ export default function MangaPage() {
       <PageHeader title="Manga / Manhwa" intro={content.manga.intro} />
       <div className="flex flex-col gap-10">
         {chunk(content.manga.items, 4).map((shelf, i) => (
-          <BookShelf key={i} books={shelf} />
+          <BookShelf
+            key={i}
+            books={shelf.map((b) => ({ ...b, cover: `/manga/${slugify(b.title)}.jpg` }))}
+          />
         ))}
       </div>
     </div>

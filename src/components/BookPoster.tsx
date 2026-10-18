@@ -1,5 +1,8 @@
 export type Book = { title: string; author?: string; genre: string; cover?: string };
 
+export const slugify = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
 const GENRE_THEME: Record<string, string> = {
   Thriller: 'from-[#2a2620] to-[#4a453b]',
   Fantasy: 'from-[#3a2f26] to-[#6b5a48]',
@@ -21,15 +24,21 @@ const FALLBACK_THEME = 'from-[#332e28] to-[#5e5548]';
 const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E\")";
 
+import { useState } from 'react';
+
 export function BookPoster({ book }: { book: Book }) {
+  const [coverFailed, setCoverFailed] = useState(false);
+  const showCover = Boolean(book.cover) && !coverFailed;
+
   return (
     <article className="group">
       <div className="relative aspect-[2/3] overflow-hidden rounded-[10px] border border-[#e8e4de] bg-[#fcfbf9] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 motion-reduce:group-hover:shadow-sm dark:border-[#2e2a24] dark:bg-[#171410]">
-        {book.cover ? (
+        {showCover ? (
           <img
             src={book.cover}
             alt=""
             loading="lazy"
+            onError={() => setCoverFailed(true)}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
         ) : (
