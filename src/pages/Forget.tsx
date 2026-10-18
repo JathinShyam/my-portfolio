@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { CSSProperties, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
 import content from '@/data/content';
@@ -81,14 +81,18 @@ function PosterCard({
 }) {
   return (
     <div
-      className={fixedWidth ? 'min-w-0' : 'min-w-0 flex-1 basis-0'}
-      style={{
-        transform: `rotate(${rotate}deg)${scale ? ` scale(${scale})` : ''}`,
-        marginTop,
-        transformOrigin: scale ? 'bottom center' : 'top center',
-        width: fixedWidth ? 'calc((100% - 5rem) / 5)' : undefined,
-        maxWidth: !fixedWidth ? maxWidth : undefined,
-      }}
+      className={`poster-jiggle min-w-0 ${fixedWidth ? '' : 'flex-1 basis-0'}`}
+      style={
+        {
+          '--poster-rotate': `${rotate}deg`,
+          '--poster-scale': String(scale ?? 1),
+          transform: `rotate(${rotate}deg)${scale ? ` scale(${scale})` : ''}`,
+          marginTop,
+          transformOrigin: scale ? 'bottom center' : 'top center',
+          width: fixedWidth ? 'calc((100% - 5rem) / 5)' : undefined,
+          maxWidth: !fixedWidth ? maxWidth : undefined,
+        } as CSSProperties
+      }
     >
       {showPin && (
         <span className="relative z-10 mx-auto -mb-1 block h-3.5 w-2.5 rounded-[2px] bg-[#f4efe6] shadow-sm dark:bg-[#3a352c]">

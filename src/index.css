@@ -38,6 +38,17 @@ html.dark {
     transform: translateY(0);
   }
 }
+@keyframes jiggle {
+  0% { transform: rotate(var(--poster-rotate, 0deg)) scale(var(--poster-scale, 1)); }
+  20% { transform: rotate(calc(var(--poster-rotate, 0deg) + 2.2deg)) scale(var(--poster-scale, 1)); }
+  40% { transform: rotate(calc(var(--poster-rotate, 0deg) - 2.2deg)) scale(var(--poster-scale, 1)); }
+  60% { transform: rotate(calc(var(--poster-rotate, 0deg) + 1.4deg)) scale(var(--poster-scale, 1)); }
+  80% { transform: rotate(calc(var(--poster-rotate, 0deg) - 1.4deg)) scale(var(--poster-scale, 1)); }
+  100% { transform: rotate(var(--poster-rotate, 0deg)) scale(var(--poster-scale, 1)); }
+}
+.poster-jiggle:hover {
+  animation: jiggle 520ms ease-in-out;
+}
 .hero-avatar {
   animation: hero-avatar-in 300ms ease-out both;
 }
