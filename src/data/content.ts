@@ -112,14 +112,14 @@ export const content = {
       name: 'Bhagavad Gita',
       description:
         'An offline-first, four-language (Telugu, English, Hindi, Tamil) scripture app covering all 18 chapters and 19 topic categories, with streaks, saved verses and share cards — no backend, no account. Includes a rolling 7-day local-notification scheduler with tap-to-verse deep links and a native Android home-screen widget (Kotlin AppWidget with a JS bridge) showing a deterministic verse of the day, guarded by Jest catalog-integrity tests and a GitHub Actions release-APK pipeline.',
-      tags: ['TypeScript', 'React Native', 'Expo', 'Offline-first', 'i18n', 'Android', 'GitHub Actions'],
+      tags: ['TypeScript', 'React Native', 'Expo', 'Offline-first', 'Android', 'GitHub Actions'],
       repoUrl: 'https://github.com/JathinShyam/BagavadGitaApp',
     },
     {
       name: 'Keyforge',
       description:
         "Remaps the OnePlus Nord 5's Plus (AI) key into custom single, double and long-press shortcuts — no root, no Magisk, no cloud. Kotlin and Jetpack Compose with Hilt, Room and DataStore, plus an optional floating action menu.",
-      tags: ['Kotlin', 'Jetpack Compose', 'Android', 'Hilt', 'Room'],
+      tags: ['Kotlin', 'Jetpack Compose', 'Android', 'Github Actions'],
       repoUrl: 'https://github.com/JathinShyam/NordAIRemapper',
     },
   ] as Project[],
