@@ -18,7 +18,7 @@ const FALLBACK_THEME = 'from-[#332e28] to-[#5e5548]';
 const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E\")";
 
-export function BookPoster({ book, status }: { book: Book; status: 'read' | 'to-read' }) {
+export function BookPoster({ book }: { book: Book }) {
   return (
     <article className="group">
       <div className="relative aspect-[2/3] overflow-hidden rounded-[10px] border border-[#e8e4de] bg-[#fcfbf9] shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 motion-reduce:group-hover:shadow-sm dark:border-[#2e2a24] dark:bg-[#171410]">
@@ -49,12 +49,6 @@ export function BookPoster({ book, status }: { book: Book; status: 'read' | 'to-
 
         <span className="pointer-events-none absolute inset-y-0 left-0 w-[6px] bg-black/[0.10] dark:bg-black/30" />
         <span className="pointer-events-none absolute inset-y-0 left-[6px] w-px bg-white/30 dark:bg-white/10" />
-
-        {status === 'to-read' && (
-          <span className="absolute right-2 top-2 rounded-full bg-black/45 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-white/90 backdrop-blur-sm">
-            Want to read
-          </span>
-        )}
       </div>
 
       <h3 className="mt-3 font-serif text-[15px] leading-snug text-[#1a1a1a] dark:text-[#f2efe9]">{book.title}</h3>

@@ -169,7 +169,7 @@ export const content = {
   ] as Project[],
 
   books: {
-    intro: "Everything I've finished, and the ones I keep meaning to start.",
+    intro: "Everything I've finished.",
     read: [
       { title: 'The Almanack of Naval Ravikant', author: 'Eric Jorgenson', genre: 'Philosophy' },
       { title: 'She Erased Her', author: 'Himanshu Rai', genre: 'Thriller' },
@@ -183,8 +183,6 @@ export const content = {
       { title: 'Deception Point', author: 'Dan Brown', genre: 'Thriller' },
       { title: 'Robinson Crusoe', author: 'Daniel Defoe', genre: 'Classic' },
       { title: 'The Diary of a Young Girl', author: 'Anne Frank', genre: 'Memoir' },
-    ],
-    toRead: [
       { title: 'Autobiography of a Yogi', author: 'Paramahansa Yogananda', genre: 'Spirituality' },
       { title: 'The Fountainhead', author: 'Ayn Rand', genre: 'Philosophy' },
       { title: 'How to Win Friends and Influence People', author: 'Dale Carnegie', genre: 'Self-help' },
