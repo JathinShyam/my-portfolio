@@ -9,6 +9,7 @@ import Projects from '@/pages/Projects';
 import Experience from '@/pages/Experience';
 import Resume from '@/pages/Resume';
 import BooksPage from '@/pages/BooksPage';
+import MangaPage from '@/pages/MangaPage';
 import Anime from '@/pages/Anime';
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/experience" element={<Experience />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/books" element={<BooksPage />} />
+            <Route path="/manga" element={<MangaPage />} />
             <Route path="/anime" element={<Anime />} />
             <Route path="*" element={<Home />} />
           </Routes>

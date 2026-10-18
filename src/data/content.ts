@@ -67,6 +67,7 @@ export const content = {
     links: [
       { label: 'anime', href: '/anime' },
       { label: 'books', href: '/books' },
+      { label: 'manga', href: '/manga' },
     ],
   },
   quote: { text: 'Simplicity is prerequisite for reliability.', author: 'Edsger W. Dijkstra' },
@@ -187,7 +188,11 @@ export const content = {
       { title: 'Robinson Crusoe', author: 'Daniel Defoe', genre: 'Classic' },
       { title: 'The Diary of a Young Girl', author: 'Anne Frank', genre: 'Memoir' },
     ],
-    manga: [
+  },
+
+  manga: {
+    intro: 'Panels I keep coming back to.',
+    items: [
       { title: 'Vagabond', author: 'Takehiko Inoue', genre: 'Seinen' },
       { title: 'Demon Slayer', author: 'Koyoharu Gotouge', genre: 'Shonen' },
       { title: 'Attack on Titan', author: 'Hajime Isayama', genre: 'Shonen' },

@@ -19,15 +19,6 @@ export default function BooksPage() {
           <BookShelf key={i} books={shelf} />
         ))}
       </div>
-
-      <h2 className="mb-6 mt-14 font-serif text-[22px] font-normal tracking-tight text-[#222222] dark:text-[#f0ede7]">
-        Manga / Manhwa
-      </h2>
-      <div className="flex flex-col gap-10">
-        {chunk(content.books.manga, 4).map((shelf, i) => (
-          <BookShelf key={i} books={shelf} />
-        ))}
-      </div>
     </div>
   );
 }
