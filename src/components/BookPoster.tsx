@@ -11,6 +11,9 @@ const GENRE_THEME: Record<string, string> = {
   Finance: 'from-[#413a2e] to-[#6f6650]',
   Fiction: 'from-[#3d332b] to-[#6e5e4c]',
   'Short stories': 'from-[#38312a] to-[#645748]',
+  Seinen: 'from-[#26313a] to-[#4d5e6e]',
+  Shonen: 'from-[#5a2b22] to-[#8f4a37]',
+  Manhwa: 'from-[#2f3a2c] to-[#556b50]',
 };
 
 const FALLBACK_THEME = 'from-[#332e28] to-[#5e5548]';

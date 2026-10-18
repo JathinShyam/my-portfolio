@@ -187,6 +187,14 @@ export const content = {
       { title: 'Robinson Crusoe', author: 'Daniel Defoe', genre: 'Classic' },
       { title: 'The Diary of a Young Girl', author: 'Anne Frank', genre: 'Memoir' },
     ],
+    manga: [
+      { title: 'Vagabond', author: 'Takehiko Inoue', genre: 'Seinen' },
+      { title: 'Demon Slayer', author: 'Koyoharu Gotouge', genre: 'Shonen' },
+      { title: 'Attack on Titan', author: 'Hajime Isayama', genre: 'Shonen' },
+      { title: 'Solo Leveling', author: 'Chugong', genre: 'Manhwa' },
+      { title: 'Homunculus', author: 'Hideo Yamamoto', genre: 'Seinen' },
+      { title: "Omniscient Reader's Viewpoint", author: 'Sing Shong', genre: 'Manhwa' },
+    ] as { title: string; author: string; genre: string }[],
   },
 
   favorites: [
