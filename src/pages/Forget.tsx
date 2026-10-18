@@ -97,11 +97,11 @@ function PosterCard({
       )}
       <div className="relative">
         <div
-          className={`block w-full bg-white text-center shadow-[0_10px_16px_rgba(62,36,12,0.32)] ring-1 ring-black/[0.06] dark:bg-[#1c1913] dark:ring-white/[0.06] ${
+          className={`block w-full bg-white text-center shadow-[0_10px_16px_rgba(62,36,12,0.32)] ring-1 ring-black/[0.06] ${
             padding === 'podium' ? 'p-1.5 pb-3' : 'p-1 pb-2'
           }`}
         >
-          <span className="relative block aspect-[2/3] overflow-hidden bg-[#efe8dc] dark:bg-[#262219]">
+          <span className="relative block aspect-[2/3] overflow-hidden bg-[#efe8dc]">
             <img
               src={entry.image}
               alt=""
