@@ -72,7 +72,7 @@ export function StackSection() {
   return (
     <section id="stack">
       <div className="border-t border-dashed border-[#e8e4de] pt-6 dark:border-[#2e2a24]">
-        <h2 className="border-y border-dashed border-[#e8e4de] bg-[#f3eee7]/60 py-3 font-serif text-[22px] font-normal tracking-tight text-[#222] dark:border-[#2e2a24] dark:bg-[#221e18]/60 dark:text-[#f0ede7]">
+        <h2 className="mb-6 -ml-[2px] font-serif text-[24px] font-normal tracking-tight text-[#222222] dark:text-[#f0ede7]">
           {content.stackHeading}
         </h2>
 
