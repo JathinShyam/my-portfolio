@@ -72,7 +72,7 @@ export default function BlogPost() {
 
       {headings.length > 0 && (
         <aside className="no-scrollbar fixed left-8 top-[210px] hidden max-h-[calc(100vh-230px)] w-[240px] overflow-y-auto lg:block">
-          <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#a9a39d] dark:text-[#78726a]">
+          <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#6f6a63] dark:text-[#8a847b]">
             Contents
           </div>
           <ul className="flex flex-col gap-2">

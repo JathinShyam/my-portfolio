@@ -133,7 +133,7 @@ function PosterCard({
         {entry.rank <= 3 && <MedalRosette rank={entry.rank} size={padding === 'podium' ? 'lg' : 'sm'} />}
         {entry.rank === 1 && (
           <span
-            className="absolute -bottom-2.5 left-1/2 z-20 -translate-x-1/2 bg-[#c62828] px-4 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-sm"
+            className="absolute -bottom-2.5 left-1/2 z-20 -translate-x-1/2 bg-[#9a4534] px-4 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-sm"
             style={{
               clipPath:
                 'polygon(8px 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0 50%)',

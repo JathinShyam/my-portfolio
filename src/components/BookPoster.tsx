@@ -53,7 +53,7 @@ export function BookPoster({ book }: { book: Book }) {
 
       <h3 className="mt-3 font-serif text-[15px] leading-snug text-[#1a1a1a] dark:text-[#f2efe9]">{book.title}</h3>
       {book.author && <p className="mt-1 text-[12px] text-[#847e78] dark:text-[#9a948b]">{book.author}</p>}
-      <p className="mt-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-[#a9a39d] dark:text-[#78726a]">
+      <p className="mt-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-[#6f6a63] dark:text-[#8a847b]">
         {book.genre}
       </p>
     </article>

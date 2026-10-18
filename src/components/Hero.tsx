@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BadgeCheck, RotateCw, FileText, ArrowRight } from 'lucide-react';
+import { RotateCw, FileText, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import content from '@/data/content';
 
@@ -8,7 +8,7 @@ function AvatarWithFallback({ src, alt }: { src: string; alt: string }) {
   if (failed) {
     return (
       <div className="flex h-full w-full items-center justify-center bg-[#f3eee7] dark:bg-[#221e18]">
-        <span className="font-serif text-4xl text-[#6b6661] dark:text-[#b3ada4]">S</span>
+        <span className="font-serif text-4xl text-[#6b6661] dark:text-[#b3ada4]">{alt.charAt(0)}</span>
       </div>
     );
   }

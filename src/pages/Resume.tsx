@@ -65,7 +65,7 @@ export default function Resume() {
       <div className="mb-10 flex flex-col gap-4">
         {Object.entries(r.skills).map(([group, items]) => (
           <div key={group}>
-            <div className="mb-1.5 text-[11px] font-bold uppercase tracking-wide text-[#a9a39d] dark:text-[#78726a]">
+            <div className="mb-1.5 text-[11px] font-bold uppercase tracking-wide text-[#6f6a63] dark:text-[#8a847b]">
               {group}
             </div>
             <div className="flex flex-wrap gap-x-3 gap-y-1 text-[13px] text-[#3a3530] dark:text-[#d7d2ca]">

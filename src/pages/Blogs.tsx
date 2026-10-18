@@ -10,7 +10,7 @@ export default function Blogs() {
       <PageHeader title="Writings" intro="Notes from building things — posted here and on Medium." />
       {years.map((year) => (
         <div key={year} className="mb-10">
-          <div className="mb-2 text-[13px] text-[#a9a39d] dark:text-[#78726a]">{year}</div>
+          <div className="mb-2 text-[13px] text-[#6f6a63] dark:text-[#8a847b]">{year}</div>
           <WritingsList posts={content.writings.filter((w) => w.year === year)} />
         </div>
       ))}

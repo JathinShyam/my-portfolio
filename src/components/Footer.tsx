@@ -24,7 +24,7 @@ export default function Footer() {
             <span className="tabular-nums">{content.timezone}</span>
           </div>
         </div>
-        <div className="text-center text-[11.5px] font-medium tracking-wide text-[#a9a39d] dark:text-[#78726a]">
+        <div className="text-center text-[11.5px] font-medium tracking-wide text-[#6f6a63] dark:text-[#8a847b]">
           {content.footerTagline}
         </div>
       </div>

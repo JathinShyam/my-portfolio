@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
-import content from '@/data/content';
 import type { Writing } from '@/data/content';
 
 function Row({ post }: { post: Writing }) {
@@ -12,7 +11,7 @@ function Row({ post }: { post: Writing }) {
       <span className="order-3 col-span-2 font-serif text-[17px] leading-snug text-[#1a1a1a] underline decoration-transparent underline-offset-[3px] transition-colors duration-200 group-hover:decoration-current dark:text-[#f2efe9] sm:order-none sm:col-span-1">
         {post.title}
       </span>
-      <span className="order-2 text-right text-[12.5px] text-[#a9a39d] dark:text-[#78726a] sm:order-none">
+      <span className="order-2 text-right text-[12.5px] text-[#6f6a63] dark:text-[#8a847b] sm:order-none">
         {post.readTime}
       </span>
     </>

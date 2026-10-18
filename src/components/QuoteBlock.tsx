@@ -11,7 +11,7 @@ export default function QuoteBlock() {
         </p>
         <div className="flex items-center justify-center gap-3">
           <span className="h-px w-6 bg-[#e8e4de] dark:bg-[#2e2a24]" />
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#a9a39d] dark:text-[#78726a]">
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#6f6a63] dark:text-[#8a847b]">
             {content.quote.author}
           </span>
           <span className="h-px w-6 bg-[#e8e4de] dark:bg-[#2e2a24]" />

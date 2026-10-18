@@ -1,6 +1,7 @@
 import Hero from '@/components/Hero';
 import SocialRow from '@/components/SocialRow';
 import WritingsList from '@/components/WritingsList';
+import OssCard from '@/components/OssCard';
 import ExperienceCard from '@/components/ExperienceCard';
 import ProjectCard from '@/components/ProjectCard';
 import QuoteBlock from '@/components/QuoteBlock';
@@ -16,20 +17,20 @@ export default function Home() {
     <div className="mx-auto max-w-[740px] px-6 pt-24 md:pt-[140px]">
       <Hero />
       <div className="hero-text mt-16" style={{ animationDelay: '80ms' }}>
-        <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-[#a9a39d] dark:text-[#78726a]">
+        <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-[#6f6a63] dark:text-[#8a847b]">
           Find me
         </div>
         <SocialRow />
       </div>
 
       <div className="hero-text mt-10" style={{ animationDelay: '160ms' }}>
-        <p className="whitespace-pre-line text-[15px] leading-relaxed text-[#3a3530] dark:text-[#d7d2ca]">
+        <p className="whitespace-pre-line text-[15px] text-[#3a3530] dark:text-[#d7d2ca]">
           {content.hello}
         </p>
       </div>
 
       <div className="hero-text mt-8" style={{ animationDelay: '240ms' }}>
-        <p className="text-[15px] leading-relaxed text-[#3a3530] dark:text-[#d7d2ca]">
+        <p className="text-[15px] text-[#3a3530] dark:text-[#d7d2ca]">
           {content.personal.text}
         </p>
         <div className="mt-3 flex items-baseline gap-x-2.5 text-[13px] text-[#847e78] dark:text-[#9a948b]">
@@ -51,6 +52,22 @@ export default function Home() {
 
       <StackSection />
       <Separator />
+
+      {content.oss.length > 0 && (
+        <>
+          <div>
+            <h2 className="-ml-[2px] mb-4 font-serif text-[24px] font-normal tracking-tight text-[#222222] dark:text-[#f0ede7]">
+              Open Source
+            </h2>
+            <div className="flex flex-col gap-4">
+              {content.oss.map((entry) => (
+                <OssCard key={entry.org} entry={entry} />
+              ))}
+            </div>
+          </div>
+          <Separator />
+        </>
+      )}
 
       {latestPosts.length > 0 && (
         <>
