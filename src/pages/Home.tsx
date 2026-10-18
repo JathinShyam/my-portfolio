@@ -1,7 +1,7 @@
 import Hero from '@/components/Hero';
 import SocialRow from '@/components/SocialRow';
 import WritingsList from '@/components/WritingsList';
-import OssCard from '@/components/OssCard';
+import ExperienceCard from '@/components/ExperienceCard';
 import ProjectCard from '@/components/ProjectCard';
 import QuoteBlock from '@/components/QuoteBlock';
 import Separator from '@/components/Separator';
@@ -55,15 +55,15 @@ export default function Home() {
         </>
       )}
 
-      {content.oss.length > 0 && (
+      {content.resume.experience.length > 0 && (
         <>
           <div>
             <div className="mb-4 flex items-center justify-between">
               <h2 className="-ml-[2px] font-serif text-[24px] font-normal tracking-tight text-[#222222] dark:text-[#f0ede7]">
-                Open Source
+                Experience
               </h2>
               <Link
-                to="/oss"
+                to="/experience"
                 className="flex items-center gap-1 text-[14px] font-medium text-[#5e5852] transition-colors duration-200 hover:text-[#111111] dark:text-[#c9c3ba] dark:hover:text-[#f2efe9]"
               >
                 View All
@@ -74,8 +74,8 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex flex-col gap-4">
-              {content.oss.map((entry) => (
-                <OssCard key={entry.org} entry={entry} />
+              {content.resume.experience.map((item) => (
+                <ExperienceCard key={`${item.org}-${item.period}`} item={item} />
               ))}
             </div>
           </div>

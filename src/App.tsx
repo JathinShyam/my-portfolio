@@ -6,7 +6,7 @@ import Home from '@/pages/Home';
 import Blogs from '@/pages/Blogs';
 import BlogPost from '@/pages/BlogPost';
 import Projects from '@/pages/Projects';
-import Oss from '@/pages/Oss';
+import Experience from '@/pages/Experience';
 import Resume from '@/pages/Resume';
 import PerfectDay from '@/pages/PerfectDay';
 import Forget from '@/pages/Forget';
@@ -23,7 +23,7 @@ export default function App() {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:slug" element={<BlogPost />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/oss" element={<Oss />} />
+            <Route path="/experience" element={<Experience />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/perfect-day" element={<PerfectDay />} />
             <Route path="/forget" element={<Forget />} />

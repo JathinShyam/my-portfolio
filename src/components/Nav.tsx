@@ -7,7 +7,7 @@ const links = [
   { label: 'Home', to: '/' },
   { label: 'Writings', to: '/blogs' },
   { label: 'Projects', to: '/projects' },
-  { label: 'oss', to: '/oss' },
+  { label: 'Experience', to: '/experience' },
 ];
 
 export default function Nav() {
