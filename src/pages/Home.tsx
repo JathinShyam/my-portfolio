@@ -17,16 +17,16 @@ export default function Home() {
     <div className="mx-auto max-w-[740px] px-6 pt-24 md:pt-[140px]">
       <Hero />
       <div className="hero-text mt-16" style={{ animationDelay: '80ms' }}>
+        <p className="whitespace-pre-line text-[15px] text-[#3a3530] dark:text-[#d7d2ca]">
+          {content.hello}
+        </p>
+      </div>
+
+      <div className="hero-text mt-10" style={{ animationDelay: '160ms' }}>
         <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-[#6f6a63] dark:text-[#8a847b]">
           Find me
         </div>
         <SocialRow />
-      </div>
-
-      <div className="hero-text mt-10" style={{ animationDelay: '160ms' }}>
-        <p className="whitespace-pre-line text-[15px] text-[#3a3530] dark:text-[#d7d2ca]">
-          {content.hello}
-        </p>
       </div>
 
       <div className="hero-text mt-8" style={{ animationDelay: '240ms' }}>
