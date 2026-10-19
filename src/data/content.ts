@@ -42,7 +42,7 @@ export type StackRow = {
 export const content = {
   meta: {
     title: 'Shyam Kumar Reddy Kalla',
-    description: 'A little corner on the Internet that speaks about me.',
+    // description: 'A little corner on the Internet that speaks about me.',
   },
   name: 'Shyam Kumar Reddy K',
   verified: true,
