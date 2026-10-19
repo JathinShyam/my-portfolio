@@ -110,7 +110,7 @@ export const content = {
       { name: 'Locust', icon: 'locust' },
     ] },
   ] as StackRow[],
-  footerTagline: 'A little corner on the Internet that speaks about me.',
+  // footerTagline: 'A little corner on the Internet that speaks about me.',
   resumeUrl: resumePdf,
   resumeFileName: 'Shyam_Kumar_Reddy_Kalla_Resume.pdf',
 
