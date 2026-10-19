@@ -29,39 +29,6 @@ export default function Home() {
         <SocialRow />
       </div>
 
-      <div className="hero-text mt-8" style={{ animationDelay: '240ms' }}>
-        <p className="text-[15px] text-[#3a3530] dark:text-[#d7d2ca]">
-          {content.personal.text}
-        </p>
-        <div className="mt-3 flex items-baseline gap-x-2.5 text-[13px] text-[#847e78] dark:text-[#9a948b]">
-          {content.personal.links.map((link, i) => (
-            <span key={link.href} className="flex items-baseline gap-x-2.5">
-              {i > 0 && <span className="text-[#d4cfc8] dark:text-[#4a453b]">·</span>}
-              <Link
-                to={link.href}
-                className="group flex items-center gap-0.5 transition-colors duration-200 hover:text-[#111111] dark:hover:text-[#f2efe9]"
-              >
-                {link.label}
-                <svg
-                  viewBox="0 0 24 24"
-                  width={13}
-                  height={13}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2.4}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="-mb-[1px] rotate-[16deg] transition-transform duration-200 group-hover:rotate-[28deg] group-hover:-translate-y-px"
-                >
-                  <path d="M7 17 17 7" />
-                  <path d="M7 7h10v10" />
-                </svg>
-              </Link>
-            </span>
-          ))}
-        </div>
-      </div>
-
       <Separator />
 
       <StackSection />
@@ -79,13 +46,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <Separator />
-        </>
-      )}
-
-      {latestPosts.length > 0 && (
-        <>
-          <WritingsList posts={latestPosts} viewAllTo="/blogs" />
           <Separator />
         </>
       )}
@@ -145,6 +105,46 @@ export default function Home() {
           <Separator />
         </>
       )}
+
+      {latestPosts.length > 0 && (
+        <>
+          <WritingsList posts={latestPosts} viewAllTo="/blogs" />
+          <Separator />
+        </>
+      )}
+
+      <div className="hero-text">
+        <p className="text-[15px] text-[#3a3530] dark:text-[#d7d2ca]">
+          {content.personal.text}
+        </p>
+        <div className="mt-3 flex items-baseline gap-x-2.5 text-[13px] text-[#847e78] dark:text-[#9a948b]">
+          {content.personal.links.map((link, i) => (
+            <span key={link.href} className="flex items-baseline gap-x-2.5">
+              {i > 0 && <span className="text-[#d4cfc8] dark:text-[#4a453b]">·</span>}
+              <Link
+                to={link.href}
+                className="group flex items-center gap-0.5 transition-colors duration-200 hover:text-[#111111] dark:hover:text-[#f2efe9]"
+              >
+                {link.label}
+                <svg
+                  viewBox="0 0 24 24"
+                  width={13}
+                  height={13}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.4}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="-mb-[1px] rotate-[16deg] transition-transform duration-200 group-hover:rotate-[28deg] group-hover:-translate-y-px"
+                >
+                  <path d="M7 17 17 7" />
+                  <path d="M7 7h10v10" />
+                </svg>
+              </Link>
+            </span>
+          ))}
+        </div>
+      </div>
 
       <QuoteBlock />
     </div>
