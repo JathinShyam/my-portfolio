@@ -46,15 +46,15 @@ function iconFor(tag: string): { kind: 'brand'; path: string } | { kind: 'lucide
   return null;
 }
 
-export default function TagIcon({ tag }: { tag: string }) {
+export default function TagIcon({ tag, size = 16 }: { tag: string; size?: number }) {
   const icon = iconFor(tag);
   if (!icon) return null;
   if (icon.kind === 'lucide') {
     const Lucide = icon.Icon;
-    return <Lucide size={16} strokeWidth={1.75} className="shrink-0" aria-hidden />;
+    return <Lucide size={size} strokeWidth={1.75} className="shrink-0" aria-hidden />;
   }
   return (
-    <svg viewBox="0 0 24 24" width={16} height={16} fill="currentColor" aria-hidden className="shrink-0">
+    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden className="shrink-0">
       <path d={icon.path} />
     </svg>
   );
