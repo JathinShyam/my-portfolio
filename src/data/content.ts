@@ -47,7 +47,7 @@ export const content = {
   name: 'Shyam Kumar Reddy K',
   verified: true,
   tagline: 'SDE 1 @ AltiusHub',
-  taglines: ['SDE 1 @ AltiusHub', 'LeetCode Knight (Top 5%)', 'Tech Nerd'],
+  taglines: ['SDE 1 @ AltiusHub', 'LeetCode Knight (Top 5%)'],
   bio: "I build backend services and the tooling around them — mostly Python, TypeScript and Go. Currently SDE 1 at AltiusHub in Hyderabad, where I architected track-and-trace compliance microservices for six markets and led a small pod.\nI like the unglamorous parts: migration drift, p95 latency, retries and dead-letter queues — and I write about the small problems I run into along the way.",
   avatarUrl: '/avatar.jpg',
   avatarAltUrl: '/pictures/pp2.jpg',
