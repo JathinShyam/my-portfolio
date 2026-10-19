@@ -48,7 +48,7 @@ export const content = {
   verified: true,
   tagline: 'SDE 1 @ AltiusHub',
   taglines: ['SDE 1 @ AltiusHub', 'LeetCode Knight (Top 5%)'],
-  bio: "I build backend services and the tooling around them — mostly Python, TypeScript and Go. Currently SDE 1 at AltiusHub in Hyderabad.",
+  bio: "I build backend services and the tooling around them - mostly Python, TypeScript and Go. Currently SDE 1 at AltiusHub in Hyderabad.",
   avatarUrl: '/avatar.jpg',
   avatarAltUrl: '/pictures/pp2.jpg',
   links: { profile: 'https://github.com/JathinShyam' },
