@@ -61,7 +61,7 @@ export const content = {
     { label: 'Medium', href: 'https://medium.com/@jathinshyam', icon: 'medium' },
     { label: 'Email', href: 'mailto:heyshyam.r@gmail.com', icon: 'mail' },
   ],
-  hello: "I'm usually around on GitHub and LinkedIn, and always up for talking about backend systems, databases or Android mods.\nDrop me a message — happy to talk shop.",
+  hello: "I'm usually around on GitHub and LinkedIn, and always up for talking about backend systems, databases or Android mods.\nDrop me a message - happy to talk shop.",
   personal: {
     text: 'A bit about me, outside of tech.',
     links: [
