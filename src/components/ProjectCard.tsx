@@ -1,4 +1,5 @@
 import BrandIcon from '@/components/BrandIcon';
+import TagIcon from '@/components/ProjectTag';
 import type { Project } from '@/data/content';
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -10,11 +11,14 @@ export default function ProjectCard({ project }: { project: Project }) {
       <p className="mb-5 text-[13.5px] leading-[1.65] text-[#5e5852] dark:text-[#c9c3ba]">
         {project.description}
       </p>
-      <div className="mb-4 h-px bg-[#ece7e1] dark:bg-[#2a2620]" />
       <div className="mb-6 flex flex-wrap gap-2">
         {project.tags.map((tag) => (
-          <span key={tag} className="text-[11.5px] font-medium text-[#6b6661] dark:text-[#b3ada4]">
-            {tag}
+          <span
+            key={tag}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-dashed border-[#e8e4de] px-3 py-1 text-sm text-[#7a746e] transition-colors duration-200 hover:border-[#d8d2cb] hover:text-[#111] dark:border-[#2e2a24] dark:text-[#9d978e] dark:hover:border-[#4a453b] dark:hover:text-[#f2efe9]"
+          >
+            <TagIcon tag={tag} />
+            <span className="font-medium">{tag}</span>
           </span>
         ))}
       </div>
