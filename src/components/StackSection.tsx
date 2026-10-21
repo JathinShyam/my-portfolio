@@ -55,14 +55,14 @@ const GENERIC: Record<string, LucideIcon> = {
   reactnative: Smartphone,
 };
 
-function ChipIcon({ id }: { id: string }) {
+function ChipIcon({ id, size = 18 }: { id: string; size?: number }) {
   const Lucide = GENERIC[id];
   if (Lucide) {
-    return <Lucide size={18} strokeWidth={1.75} className="shrink-0" aria-hidden />;
+    return <Lucide size={size} strokeWidth={1.75} className="shrink-0" aria-hidden />;
   }
 
   return (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden className="shrink-0">
+    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden className="shrink-0">
       <path d={BRAND[id]} />
     </svg>
   );
@@ -85,15 +85,15 @@ export function StackSection() {
               {row.label}
             </span>
 
-            <div className="flex flex-1 flex-wrap gap-2">
+            <div className="flex flex-1 flex-wrap gap-1.5">
               {row.items.map((item) => (
                 <div
                   key={item.name}
                   aria-label={item.name}
                   tabIndex={0}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-dashed border-[#e8e4de] px-3 py-1 text-sm text-[#7a746e] transition-colors duration-200 hover:border-[#d8d2cb] hover:text-[#111] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/10 dark:border-[#2e2a24] dark:text-[#9d978e] dark:hover:border-[#4a453b] dark:hover:text-[#f2efe9] dark:focus-visible:ring-white/10"
+                  className="inline-flex items-center gap-1 rounded-md border border-dashed border-[#e8e4de] px-2 py-0.5 text-[11.5px] text-[#7a746e] transition-colors duration-200 hover:border-[#d8d2cb] hover:text-[#111] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/10 dark:border-[#2e2a24] dark:text-[#9d978e] dark:hover:border-[#4a453b] dark:hover:text-[#f2efe9] dark:focus-visible:ring-white/10"
                 >
-                  <ChipIcon id={item.icon} />
+                  <ChipIcon id={item.icon} size={13} />
                   <span className="font-medium">{item.name}</span>
                 </div>
               ))}
