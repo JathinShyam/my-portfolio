@@ -15,7 +15,7 @@ import {
   siReact,
   siGithubactions,
 } from 'simple-icons';
-import { Smartphone, type LucideIcon } from 'lucide-react';
+import { BrainCircuit, Cloud, Smartphone, type LucideIcon } from 'lucide-react';
 
 const BRAND: Record<string, string> = {
   Python: siPython.path,
@@ -32,12 +32,14 @@ const BRAND: Record<string, string> = {
   Android: siAndroid.path,
   Kotlin: siKotlin.path,
   'Jetpack Compose': siJetpackcompose.path,
+  React: siReact.path,
   'React Native': siReact.path,
   'CI/CD': siGithubactions.path,
 };
 
 const GENERIC: Record<string, LucideIcon> = {
-  'React Native': Smartphone,
+  Azure: Cloud,
+  'Deep Learning': BrainCircuit,
 };
 
 function iconFor(tag: string): { kind: 'brand'; path: string } | { kind: 'lucide'; Icon: LucideIcon } | null {
