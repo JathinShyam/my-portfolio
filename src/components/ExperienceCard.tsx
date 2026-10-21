@@ -1,3 +1,5 @@
+import TagIcon from '@/components/ProjectTag';
+
 type ExperienceItem = {
   period: string;
   role: string;
@@ -7,6 +9,7 @@ type ExperienceItem = {
 };
 
 export default function ExperienceCard({ item }: { item: ExperienceItem }) {
+  const tags = item.stack.split(',').map((s) => s.trim()).filter(Boolean);
   return (
     <div className="rounded-2xl border border-[#e8e4de] bg-[#fcfbf9] p-[18px] transition-all duration-300 hover:border-[#d8d2cb] hover:bg-white dark:border-[#2e2a24] dark:bg-[#171410] dark:hover:border-[#4a453b] dark:hover:bg-[#1c1913]">
       <div className="mb-5 flex items-start justify-between gap-3">
@@ -32,10 +35,16 @@ export default function ExperienceCard({ item }: { item: ExperienceItem }) {
         ))}
       </ul>
 
-      <div className="mt-4 border-t border-[#ece7e1] pt-3 dark:border-[#2a2620]">
-        <span className="text-[11.5px] font-medium text-[#847e78] dark:text-[#9a948b]">
-          {item.stack}
-        </span>
+      <div className="mt-4 flex flex-wrap gap-1.5 border-t border-[#ece7e1] pt-3 dark:border-[#2a2620]">
+        {tags.map((tag) => (
+          <span
+            key={tag}
+            className="inline-flex items-center gap-1 rounded-md border border-dashed border-[#e8e4de] px-2 py-0.5 text-[11.5px] font-medium text-[#7a746e] transition-colors duration-200 hover:border-[#d8d2cb] hover:text-[#111] dark:border-[#2e2a24] dark:text-[#9d978e] dark:hover:border-[#4a453b] dark:hover:text-[#f2efe9]"
+          >
+            <TagIcon tag={tag} size={13} />
+            {tag}
+          </span>
+        ))}
       </div>
     </div>
   );
