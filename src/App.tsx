@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import ScrollProgress from '@/components/ScrollProgress';
 import Home from '@/pages/Home';
 import Blogs from '@/pages/Blogs';
 import BlogPost from '@/pages/BlogPost';
@@ -16,6 +17,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <ScrollProgress />
       <div className="flex min-h-screen flex-col bg-white font-sans text-[#1a1a1a] antialiased transition-colors duration-300 dark:bg-[#151210] dark:text-[#f2efe9]">
         <Nav />
         <main className="flex-1">

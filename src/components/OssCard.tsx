@@ -6,7 +6,7 @@ export default function OssCard({ entry }: { entry: OssEntry }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rounded-2xl border border-[#e8e4de] bg-[#fcfbf9] p-[18px] transition-all duration-300 hover:border-[#d8d2cb] hover:bg-white dark:border-[#2e2a24] dark:bg-[#171410] dark:hover:border-[#4a453b] dark:hover:bg-[#1c1913]">
+    <div className="group rounded-2xl border border-[#e8e4de] bg-[#fcfbf9] p-[18px] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#d8d2cb] hover:bg-white hover:shadow-[0_6px_24px_-12px_rgba(0,0,0,0.12)] dark:border-[#2e2a24] dark:bg-[#171410] dark:hover:border-[#4a453b] dark:hover:bg-[#1c1913] dark:hover:shadow-[0_6px_24px_-12px_rgba(0,0,0,0.5)]">
       <div className="mb-3 flex items-center gap-3">
         <img
           src={entry.orgAvatar}

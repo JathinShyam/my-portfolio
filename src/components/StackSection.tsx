@@ -71,11 +71,7 @@ function ChipIcon({ id, size = 18 }: { id: string; size?: number }) {
 export function StackSection() {
   return (
     <section id="stack">
-      <div className="pt-6">
-        <h2 className="mb-6 -ml-[2px] font-serif text-[24px] font-normal tracking-tight text-[#222222] dark:text-[#f0ede7]">
-          {content.stackHeading}
-        </h2>
-
+      <div>
         {content.stack.map((row) => (
           <div
             key={row.label}
