@@ -51,7 +51,7 @@ export default function Home() {
 
       <Separator />
 
-      {content.oss.length > 0 && (
+      {/* {content.oss.length > 0 && (
         <>
           <SectionShell index="02" title="Open Source">
             <div className="flex flex-col gap-4">
@@ -62,14 +62,14 @@ export default function Home() {
           </SectionShell>
           <Separator />
         </>
-      )}
+      )} */}
 
       {experienceItems.length > 0 && (
         <>
           <div>
             <div className="mb-6">
               <div className="mb-1.5 flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.2em] text-[#9a948b] dark:text-[#7d766d]">
-                <span className="tabular-nums">03</span>
+                <span className="tabular-nums">02</span>
                 <span className="h-px w-6 bg-[#d8d2cb] dark:bg-[#3a352c]" />
               </div>
               <div className="flex items-center justify-between">
@@ -103,7 +103,7 @@ export default function Home() {
           <div>
             <div className="mb-6">
               <div className="mb-1.5 flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.2em] text-[#9a948b] dark:text-[#7d766d]">
-                <span className="tabular-nums">04</span>
+                <span className="tabular-nums">03</span>
                 <span className="h-px w-6 bg-[#d8d2cb] dark:bg-[#3a352c]" />
               </div>
               <div className="flex items-center justify-between">
@@ -137,7 +137,7 @@ export default function Home() {
           <div>
             <div className="mb-6">
               <div className="mb-1.5 flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.2em] text-[#9a948b] dark:text-[#7d766d]">
-                <span className="tabular-nums">05</span>
+                <span className="tabular-nums">04</span>
                 <span className="h-px w-6 bg-[#d8d2cb] dark:bg-[#3a352c]" />
               </div>
             </div>
