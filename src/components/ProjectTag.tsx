@@ -14,8 +14,14 @@ import {
   siJetpackcompose,
   siReact,
   siGithubactions,
+  siOpenjdk,
+  siSpringboot,
+  siNextdotjs,
+  siApachekafka,
+  siRabbitmq,
+  siGrafana,
 } from 'simple-icons';
-import { BrainCircuit, Cloud, Smartphone, type LucideIcon } from 'lucide-react';
+import { BrainCircuit, Braces, Cloud, Container, Database, Gauge, Layers, Smartphone, type LucideIcon } from 'lucide-react';
 
 const BRAND: Record<string, string> = {
   Python: siPython.path,
@@ -35,11 +41,23 @@ const BRAND: Record<string, string> = {
   React: siReact.path,
   'React Native': siReact.path,
   'CI/CD': siGithubactions.path,
+  Java: siOpenjdk.path,
+  'Spring Boot': siSpringboot.path,
+  'Next.js': siNextdotjs.path,
+  Kafka: siApachekafka.path,
+  RabbitMQ: siRabbitmq.path,
+  Grafana: siGrafana.path,
+  'TypeScript/JavaScript': siTypescript.path,
 };
 
 const GENERIC: Record<string, LucideIcon> = {
   Azure: Cloud,
+  SQL: Database,
+  'Django REST Framework': Layers,
   'Deep Learning': BrainCircuit,
+  Testcontainers: Container,
+  Micrometer: Gauge,
+  'TypeScript/JavaScript': Braces,
 };
 
 function iconFor(tag: string): { kind: 'brand'; path: string } | { kind: 'lucide'; Icon: LucideIcon } | null {

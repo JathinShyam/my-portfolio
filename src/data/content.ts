@@ -107,7 +107,7 @@ export const content = {
       { name: 'Flower', icon: 'flower' },
     ] },
   ] as StackRow[],
-  // footerTagline: 'A little corner on the Internet that speaks about me.',
+  footerTagline: 'A little corner on the Internet that speaks about me.',
   resumeUrl: 'https://drive.google.com/file/d/1TW9TuPjiykS85xJTHygMa-Q9Ydhhsjx6/view?usp=sharing',
 
   writings: [

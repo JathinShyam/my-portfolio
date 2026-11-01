@@ -19,8 +19,13 @@ import {
   siGithubactions,
   siLocust,
   siJetpackcompose,
+  siSpringboot,
+  siNextdotjs,
+  siApachekafka,
+  siRabbitmq,
+  siGrafana,
 } from 'simple-icons';
-import { Cloud, Database, Flower2, Layers, Smartphone, Timer, type LucideIcon } from 'lucide-react';
+import { Activity, Cloud, Container, Database, Flower2, Gauge, Layers, Smartphone, Timer, type LucideIcon } from 'lucide-react';
 import content from '@/data/content';
 
 const BRAND: Record<string, string> = {
@@ -44,6 +49,11 @@ const BRAND: Record<string, string> = {
   ghactions: siGithubactions.path,
   locust: siLocust.path,
   compose: siJetpackcompose.path,
+  springboot: siSpringboot.path,
+  nextjs: siNextdotjs.path,
+  kafka: siApachekafka.path,
+  rabbitmq: siRabbitmq.path,
+  grafana: siGrafana.path,
 };
 
 const GENERIC: Record<string, LucideIcon> = {
@@ -53,6 +63,10 @@ const GENERIC: Record<string, LucideIcon> = {
   flower: Flower2,
   azure: Cloud,
   reactnative: Smartphone,
+  testcontainers: Container,
+  micrometer: Gauge,
+  typescriptjavascript: Layers,
+  activity: Activity,
 };
 
 function ChipIcon({ id, size = 18 }: { id: string; size?: number }) {
@@ -61,9 +75,12 @@ function ChipIcon({ id, size = 18 }: { id: string; size?: number }) {
     return <Lucide size={size} strokeWidth={1.75} className="shrink-0" aria-hidden />;
   }
 
+  const path = BRAND[id];
+  if (!path) return <Layers size={size} strokeWidth={1.75} className="shrink-0" aria-hidden />;
+
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden className="shrink-0">
-      <path d={BRAND[id]} />
+      <path d={path} />
     </svg>
   );
 }
