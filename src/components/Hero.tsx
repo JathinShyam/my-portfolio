@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { RotateCw, FileText, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import content from '@/data/content';
@@ -24,30 +24,6 @@ function AvatarWithFallback({ src, alt }: { src: string; alt: string }) {
 
 export default function Hero() {
   const [flipped, setFlipped] = useState(false);
-  const [taglineIndex, setTaglineIndex] = useState(0);
-  const [typed, setTyped] = useState('');
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    const full = content.taglines[taglineIndex];
-    if (!deleting && typed === full) {
-      const hold = setTimeout(() => setDeleting(true), 1800);
-      return () => clearTimeout(hold);
-    }
-    if (deleting && typed === '') {
-      setDeleting(false);
-      setTaglineIndex((i) => (i + 1) % content.taglines.length);
-      return;
-    }
-    const step = setTimeout(
-      () => {
-        setTyped(deleting ? full.slice(0, typed.length - 1) : full.slice(0, typed.length + 1));
-      },
-      deleting ? 35 : 70,
-    );
-    return () => clearTimeout(step);
-  }, [typed, deleting, taglineIndex]);
-
   return (
     <div className="flex flex-col items-center gap-9 text-center md:flex-row md:items-start md:gap-12 md:text-left">
       <div className="relative shrink-0">
@@ -88,9 +64,8 @@ export default function Hero() {
             </span>
           )}
         </h1>
-        <div className="mt-1 flex h-[22px] items-center justify-center text-[14px] font-medium text-[#847e78] dark:text-[#9a948b] md:justify-start">
-          <span>{typed}</span>
-          <span className="ml-0.5 inline-block h-[15px] w-[2px] animate-pulse bg-[#847e78] dark:bg-[#9a948b]" />
+        <div className="mt-1 text-[14px] font-medium text-[#5e5852] dark:text-[#c9c3ba]">
+          {content.tagline} · LeetCode Knight (top 5%)
         </div>
         <p className="mt-4 whitespace-pre-line text-center text-[13.5px] leading-[1.6] text-[#5e5852] dark:text-[#c9c3ba] md:max-w-[420px] md:text-left md:text-[14px]">
           {content.bio}

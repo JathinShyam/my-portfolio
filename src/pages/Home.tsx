@@ -1,7 +1,8 @@
+import { useState } from 'react';
+import { Check, Mail } from 'lucide-react';
 import Hero from '@/components/Hero';
 import SocialRow from '@/components/SocialRow';
 import WritingsList from '@/components/WritingsList';
-import OssCard from '@/components/OssCard';
 import ExperienceCard from '@/components/ExperienceCard';
 import ProjectCard from '@/components/ProjectCard';
 import QuoteBlock from '@/components/QuoteBlock';
@@ -11,13 +12,14 @@ import { Link } from 'react-router-dom';
 import content from '@/data/content';
 
 export default function Home() {
+  const [copied, setCopied] = useState(false);
   const latestPosts = content.writings.slice(0, 3);
   const experienceItems = content.resume.experience;
 
   return (
-    <div className="mx-auto max-w-[960px] px-6 pt-24 md:pt-[140px]">
+    <div className="mx-auto flex max-w-[960px] flex-col px-6 pt-24 md:pt-[140px]">
       {/* Hero + intro stay narrow */}
-      <div className="mx-auto max-w-[740px]">
+      <div className="order-1 mx-auto max-w-[740px]">
         <Hero />
         <div className="hero-text mt-16" style={{ animationDelay: '80ms' }}>
           <p className="whitespace-pre-line text-[15px] text-[#3a3530] dark:text-[#d7d2ca]">
@@ -30,16 +32,27 @@ export default function Home() {
             Find me
           </div>
           <SocialRow />
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText('heyshyam.r@gmail.com');
+              setCopied(true);
+              window.setTimeout(() => setCopied(false), 1800);
+            }}
+            className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#2563eb] px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-[#1d4ed8] focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-2 dark:bg-[#3b82f6] dark:hover:bg-[#60a5fa]"
+          >
+            {copied ? <Check size={15} /> : <Mail size={15} />}
+            {copied ? 'Email copied' : 'Email me'}
+          </button>
         </div>
       </div>
 
-      <Separator />
+      <Separator className="order-2" />
 
       {/* Stack — narrow column for the list */}
-      <div className="mx-auto max-w-[740px]">
+      <div className="order-9 mx-auto max-w-[740px]">
         <div className="mb-6">
           <div className="mb-1.5 flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.2em] text-[#9a948b] dark:text-[#7d766d]">
-            <span className="tabular-nums">01</span>
+            <span className="tabular-nums">04</span>
             <span className="h-px w-6 bg-[#d8d2cb] dark:bg-[#3a352c]" />
           </div>
           <h2 className="-ml-[2px] font-serif text-[24px] font-normal tracking-tight text-[#222222] dark:text-[#f0ede7]">
@@ -49,7 +62,7 @@ export default function Home() {
         <StackSection />
       </div>
 
-      <Separator />
+      <Separator className="order-10" />
 
       {/* {content.oss.length > 0 && (
         <>
@@ -66,7 +79,7 @@ export default function Home() {
 
       {experienceItems.length > 0 && (
         <>
-          <div>
+          <div className="order-5">
             <div className="mb-6">
               <div className="mb-1.5 flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.2em] text-[#9a948b] dark:text-[#7d766d]">
                 <span className="tabular-nums">02</span>
@@ -94,16 +107,16 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <Separator />
+          <Separator className="order-6" />
         </>
       )}
 
       {content.projects.length > 0 && (
         <>
-          <div>
+          <div className="order-3">
             <div className="mb-6">
               <div className="mb-1.5 flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.2em] text-[#9a948b] dark:text-[#7d766d]">
-                <span className="tabular-nums">03</span>
+                <span className="tabular-nums">01</span>
                 <span className="h-px w-6 bg-[#d8d2cb] dark:bg-[#3a352c]" />
               </div>
               <div className="flex items-center justify-between">
@@ -130,26 +143,26 @@ export default function Home() {
                 ))}
             </div>
           </div>
-          <Separator />
+          <Separator className="order-4" />
         </>
       )}
 
       {latestPosts.length > 0 && (
         <>
-          <div>
+          <div className="order-7">
             <div className="mb-6">
               <div className="mb-1.5 flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.2em] text-[#9a948b] dark:text-[#7d766d]">
-                <span className="tabular-nums">04</span>
+                <span className="tabular-nums">03</span>
                 <span className="h-px w-6 bg-[#d8d2cb] dark:bg-[#3a352c]" />
               </div>
             </div>
             <WritingsList posts={latestPosts} viewAllTo="/blogs" />
           </div>
-          <Separator />
+          <Separator className="order-8" />
         </>
       )}
 
-      <div className="hero-text mx-auto max-w-[740px]">
+      <div className="hero-text order-11 mx-auto max-w-[740px]">
         <p className="text-[15px] text-[#3a3530] dark:text-[#d7d2ca]">
           {content.personal.text}
         </p>
@@ -182,7 +195,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[740px]">
+      <div className="order-12 mx-auto max-w-[740px]">
         <QuoteBlock />
       </div>
     </div>

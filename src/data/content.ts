@@ -43,11 +43,11 @@ export const content = {
     title: 'Shyam Kumar Reddy Kalla',
     // description: 'A little corner on the Internet that speaks about me.',
   },
-  name: 'Shyam Kumar Reddy K',
+  name: 'Shyam Kumar Reddy Kalla',
   verified: true,
-  tagline: 'SDE 1 @ AltiusHub',
-  taglines: ['SDE 1 @ AltiusHub', 'LeetCode Knight (Top 5%)'],
-  bio: "I build backend services and the tooling around them - mostly Python, TypeScript and Go. Currently SDE 1 at AltiusHub in Hyderabad.",
+  tagline: 'SDE I @ AltiusHub',
+  taglines: ['SDE I @ AltiusHub', 'LeetCode Knight (Top 5%)'],
+  bio: 'Backend engineer building compliance platforms and distributed systems across 6 countries, 26 regulatory report types and 50M+ row PostgreSQL tables. Currently SDE I at AltiusHub in Hyderabad.',
   avatarUrl: '/avatar.jpg',
   avatarAltUrl: '/pictures/pp2.jpg',
   links: { profile: 'https://github.com/JathinShyam' },
@@ -72,13 +72,13 @@ export const content = {
   quote: { text: 'Simplicity is prerequisite for reliability.', author: 'Edsger W. Dijkstra' },
   stackHeading: 'Stack',
   stack: [
-    { label: '01 Languages', items: [
+    { label: 'Languages', items: [
       { name: 'Python', icon: 'python' },
       { name: 'Java', icon: 'java' },
       { name: 'TypeScript/JavaScript', icon: 'typescript' },
       { name: 'SQL', icon: 'sql' },
     ] },
-    { label: '02 Backend', items: [
+    { label: 'Backend & Frontend', items: [
       { name: 'Django', icon: 'django' },
       { name: 'Django REST Framework', icon: 'drf' },
       { name: 'Spring Boot', icon: 'java' },
@@ -86,19 +86,19 @@ export const content = {
       { name: 'React', icon: 'react' },
       { name: 'Next.js', icon: 'react' },
     ] },
-    { label: '03 Data & Messaging', items: [
+    { label: 'Data & Messaging', items: [
       { name: 'PostgreSQL', icon: 'postgresql' },
       { name: 'Redis', icon: 'redis' },
       { name: 'Kafka', icon: 'kafka' },
       { name: 'RabbitMQ', icon: 'rabbitmq' },
     ] },
-    { label: '04 Cloud & DevOps', items: [
+    { label: 'Cloud & DevOps', items: [
       { name: 'Azure', icon: 'azure' },
       { name: 'GitHub Actions', icon: 'ghactions' },
       { name: 'Docker', icon: 'docker' },
       { name: 'Kubernetes', icon: 'kubernetes' },
     ] },
-    { label: '05 Testing & Observability', items: [
+    { label: 'Testing & Observability', items: [
       { name: 'Locust', icon: 'locust' },
       { name: 'Testcontainers', icon: 'docker' },
       { name: 'Micrometer', icon: 'prometheus' },
@@ -156,7 +156,7 @@ export const content = {
     {
       name: 'Pulse',
       description:
-        'A production-grade, horizontally scalable notification system on Django/DRF, Celery, Redis and PostgreSQL. Multi-channel delivery (email, SMS, push) with priority queues and exponential-backoff retries; sustained 15K+ jobs/min in Locust load tests. Idempotency keys, Redis rate limiting (10 req/min per user/channel) and dead-letter queues, with Kubernetes HPA scaling 2–10 replicas to hold a <1% error rate under 200+ concurrent users.',
+        'A self-hosted, multi-channel notification platform on Django/DRF, Celery, Redis and PostgreSQL. Email, SMS and push delivery use priority queues, idempotency keys, retries and rate limiting; load-tested at 60+ RPS with p95 latency under 150ms.',
       tags: ['Python', 'Django/DRF', 'Celery', 'Redis', 'PostgreSQL', 'Docker', 'Kubernetes', 'Prometheus'],
       repoUrl: 'https://github.com/JathinShyam/Pulse',
       liveUrl: 'https://pulse-notification.vercel.app/',
@@ -164,7 +164,7 @@ export const content = {
     {
       name: 'SmartMigrate',
       description:
-        'A custom Django management command that makes schema migrations resilient in branching and merging workflows. It identifies migrations with a hybrid key (app + cleaned name + content hash, ignoring the dependencies block), so renamed or renumbered files are still matched. Built to fix cross-environment migration drift in GitHub Actions deployments (21 edge cases handled), it cut DB migration time by 95%.',
+        'A custom Django management command that makes schema migrations resilient in branching and merging workflows. It identifies migrations with a hybrid key (app + cleaned name + content hash, ignoring the dependencies block), matching renamed or renumbered files across 21 GitHub Actions edge cases and reducing migration time from 2 hours to 15 minutes.',
       tags: ['Python', 'Django', 'PostgreSQL', 'CI/CD'],
       repoUrl: 'https://github.com/JathinShyam/SmartMigrate',
     },
@@ -178,15 +178,15 @@ export const content = {
     {
       name: 'NexusLink',
       description:
-        'A focused networking project for building reliable links between services and clients with a clean, observable developer workflow.',
-      tags: ['Python', 'Django', 'PostgreSQL', 'Docker'],
+        'A production-oriented, scalable Go URL shortener designed around sub-100ms p99 redirects, graceful degradation and an asynchronous analytics pipeline. It uses PostgreSQL for mappings, Redis for caching and rate limits, Kafka for click events, and ClickHouse for analytics.',
+      tags: ['Go', 'PostgreSQL', 'Redis', 'Kafka', 'ClickHouse', 'React', 'Prometheus', 'Grafana'],
       repoUrl: 'https://github.com/JathinShyam/NexusLink',
     },
     {
       name: 'SentinelPay',
       description:
-        'A payment platform built around dependable transaction handling, idempotent operations and clear service boundaries.',
-      tags: ['Java', 'Spring Boot', 'PostgreSQL', 'Kafka', 'Docker'],
+        'A payment platform with an ACID-compliant double-entry ledger, idempotent transfers, deterministic row locking and a transactional outbox. Reconciliation validates 100K records in 3.08 seconds while Kafka consumers provide reliable publishing and recovery.',
+      tags: ['Java', 'Spring Boot', 'PostgreSQL', 'Kafka', 'Docker', 'Prometheus', 'Grafana'],
       repoUrl: 'https://github.com/JathinShyam/SentinelPay',
     },
     {
@@ -253,7 +253,7 @@ export const content = {
         stack: 'Python, Django, TypeScript, React, PostgreSQL, Celery, Azure',
         points: [
           'Architected a microservice track-and-trace compliance platform from scratch across 6 markets (Saudi Arabia, Indonesia, Azerbaijan, Egypt, UAE, Bahrain), automating 26 regulatory report types per country for 4 enterprise customers.',
-          'Executed zero-downtime migration from 1 to 2 under 500ms (~60%) and improved query performance by ~40% across large PostgreSQL datasets via logical replication, cutting latency from 1.2s to under 500ms.',
+          'Improved p99 latency from 1.2s to under 500ms on 50M+ row PostgreSQL tables by migrating to declarative list-based partitioning with zero downtime, while improving vacuum performance by ~40%.',
           'Integrated the platform with Microsoft Dynamics 365 ERP, syncing 5K records/day and saving ~2 hrs/day of manual work for 3 enterprise clients.',
           'Built long-running processing workflows with request-response cycle to Celery and RabbitMQ background workers (retries, distributed execution), improving processing throughput by 35%.',
           'Created a Django management command that fixes migration drift across environments in GitHub Actions deployments across 21 edge cases, cutting migration time from 2 hrs to 15 mins.',
@@ -270,9 +270,11 @@ export const content = {
       },
     ],
     skills: {
-      Languages: ['Python', 'Go', 'TypeScript/JavaScript', 'Java', 'SQL'],
-      'Frameworks/Platforms': ['Django', 'Django REST Framework', 'React', 'React Native', 'Expo', 'Celery', 'Celery Beat'],
-      'Data/Infra/Tools': ['PostgreSQL', 'Redis', 'Docker', 'Kubernetes', 'Git', 'Azure', 'Prometheus', 'Flower', 'Streamlit'],
+      Languages: ['Python', 'Java', 'TypeScript/JavaScript', 'SQL'],
+      'Backend & Frontend': ['Django', 'Django REST Framework', 'Spring Boot', 'Celery', 'React', 'Next.js'],
+      'Data & Messaging': ['PostgreSQL', 'Redis', 'Kafka', 'RabbitMQ'],
+      'Cloud & DevOps': ['Azure', 'GitHub Actions'],
+      'Testing & Observability': ['Locust', 'Testcontainers', 'Micrometer', 'Prometheus', 'Grafana', 'Flower'],
     } as Record<string, string[]>,
     education: [
       {
@@ -283,7 +285,7 @@ export const content = {
       },
     ],
     achievements: [
-      'Solved 1050+ DSA problems on LeetCode — Knight badge, max rating 1854, top 5%.',
+      'Solved 1,110+ DSA problems on LeetCode — Knight badge, max rating 1854, top 5%.'
     ],
   },
 };

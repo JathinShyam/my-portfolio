@@ -1,5 +1,5 @@
-export default function Separator() {
+export default function Separator({ className = '' }: { className?: string }) {
   return (
-    <div className="my-10 h-px w-full bg-gradient-to-r from-transparent via-[#e8e4de] to-transparent dark:via-[#2e2a24]" />
+    <div className={`my-10 h-px w-full bg-gradient-to-r from-transparent via-[#e8e4de] to-transparent dark:via-[#2e2a24] ${className}`} />
   );
 }

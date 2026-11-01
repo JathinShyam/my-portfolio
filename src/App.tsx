@@ -12,6 +12,7 @@ import Resume from '@/pages/Resume';
 import BooksPage from '@/pages/BooksPage';
 import MangaPage from '@/pages/MangaPage';
 import Anime from '@/pages/Anime';
+import NotFound from '@/pages/NotFound';
 
 export default function App() {
   return (
@@ -31,7 +32,7 @@ export default function App() {
             <Route path="/books" element={<BooksPage />} />
             <Route path="/manga" element={<MangaPage />} />
             <Route path="/anime" element={<Anime />} />
-            <Route path="*" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />

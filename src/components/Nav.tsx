@@ -11,9 +11,7 @@ const links = [
 ];
 
 export default function Nav() {
-  const [expanded, setExpanded] = useState(
-    () => (typeof window === 'undefined' ? true : window.innerWidth >= 768)
-  );
+  const [expanded, setExpanded] = useState(true);
   const { pathname } = useLocation();
 
   return (

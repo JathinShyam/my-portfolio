@@ -21,7 +21,7 @@ import {
   siRabbitmq,
   siGrafana,
 } from 'simple-icons';
-import { BrainCircuit, Braces, Cloud, Container, Database, Gauge, Layers, Smartphone, type LucideIcon } from 'lucide-react';
+import { BrainCircuit, Braces, Cloud, Container, Database, Gauge, Layers, type LucideIcon } from 'lucide-react';
 
 const BRAND: Record<string, string> = {
   Python: siPython.path,
