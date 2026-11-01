@@ -1,4 +1,4 @@
-import { Download } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import content from '@/data/content';
 
@@ -15,11 +15,12 @@ export default function Resume() {
         </Link>
         <a
           href={content.resumeUrl}
-          download={content.resumeFileName}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-2 rounded-full border border-[#e8e4de] bg-white px-[18px] py-2 text-[12.5px] font-semibold text-[#222222] shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-all duration-200 hover:border-[#dcd8d2] hover:bg-[#faf9f8] dark:border-[#332f28] dark:bg-[#1c1913] dark:text-[#f0ede7] dark:hover:border-[#4a453b] dark:hover:bg-[#221f19]"
         >
-          <Download size={16} className="text-[#847e78] dark:text-[#9a948b]" />
-          Download
+          <ExternalLink size={16} className="text-[#847e78] dark:text-[#9a948b]" />
+          View Resume
         </a>
       </div>
 

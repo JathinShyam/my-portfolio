@@ -123,9 +123,11 @@ export default function Home() {
               </div>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {content.projects.slice(0, 4).map((p) => (
-                <ProjectCard key={p.name} project={p} />
-              ))}
+              {content.projects
+                .filter((project) => project.name === 'Pulse' || project.name === 'SentinelPay')
+                .map((p) => (
+                  <ProjectCard key={p.name} project={p} />
+                ))}
             </div>
           </div>
           <Separator />

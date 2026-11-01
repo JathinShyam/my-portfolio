@@ -1,3 +1,4 @@
+import { ExternalLink } from 'lucide-react';
 import BrandIcon from '@/components/BrandIcon';
 import TagIcon from '@/components/ProjectTag';
 import type { Project } from '@/data/content';
@@ -23,7 +24,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           </span>
         ))}
       </div>
-      <div className="mt-auto">
+      <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2">
         <a
           href={project.repoUrl}
           target="_blank"
@@ -32,21 +33,20 @@ export default function ProjectCard({ project }: { project: Project }) {
         >
           <BrandIcon name="github" size={16} />
           Repo
-          <svg
-            viewBox="0 0 24 24"
-            width={13}
-            height={13}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="transition-transform duration-200 group-hover/repo:translate-x-0.5 group-hover/repo:-translate-y-0.5"
-          >
-            <path d="M7 17 17 7" />
-            <path d="M7 7h10v10" />
-          </svg>
+          <ExternalLink size={13} className="transition-transform duration-200 group-hover/repo:translate-x-0.5 group-hover/repo:-translate-y-0.5" />
         </a>
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/live flex w-fit items-center gap-2 text-[13px] font-medium text-[#111111] transition-opacity duration-200 hover:opacity-70 focus-visible:ring-2 focus-visible:ring-black/5 dark:text-[#f2efe9] dark:focus-visible:ring-white/10"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-[#5e8b72] dark:bg-[#78aa8c]" aria-hidden />
+            Live Demo
+            <ExternalLink size={13} className="transition-transform duration-200 group-hover/live:translate-x-0.5 group-hover/live:-translate-y-0.5" />
+          </a>
+        )}
       </div>
     </div>
   );

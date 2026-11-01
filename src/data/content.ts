@@ -1,5 +1,3 @@
-import resumePdf from '@/assets/resume.pdf';
-
 export type WritingBlock =
   | { type: 'h2'; text: string }
   | { type: 'p'; text: string }
@@ -32,6 +30,7 @@ export type Project = {
   description: string;
   tags: string[];
   repoUrl: string;
+  liveUrl?: string;
 };
 
 export type StackRow = {
@@ -73,48 +72,63 @@ export const content = {
   quote: { text: 'Simplicity is prerequisite for reliability.', author: 'Edsger W. Dijkstra' },
   stackHeading: 'Stack',
   stack: [
-    { label: '01 Language', items: [
+    { label: '01 Languages', items: [
       { name: 'Python', icon: 'python' },
-      { name: 'Go', icon: 'go' },
-      { name: 'TypeScript', icon: 'typescript' },
-      { name: 'JavaScript', icon: 'javascript' },
       { name: 'Java', icon: 'java' },
-      { name: 'Kotlin', icon: 'kotlin' },
+      { name: 'TypeScript/JavaScript', icon: 'typescript' },
       { name: 'SQL', icon: 'sql' },
     ] },
     { label: '02 Backend', items: [
       { name: 'Django', icon: 'django' },
       { name: 'Django REST Framework', icon: 'drf' },
+      { name: 'Spring Boot', icon: 'java' },
       { name: 'Celery', icon: 'celery' },
-      { name: 'Celery Beat', icon: 'celerybeat' },
-      { name: 'Flower', icon: 'flower' },
+      { name: 'React', icon: 'react' },
+      { name: 'Next.js', icon: 'react' },
     ] },
-    { label: '03 Data & Infra', items: [
+    { label: '03 Data & Messaging', items: [
       { name: 'PostgreSQL', icon: 'postgresql' },
       { name: 'Redis', icon: 'redis' },
+      { name: 'Kafka', icon: 'kafka' },
+      { name: 'RabbitMQ', icon: 'rabbitmq' },
+    ] },
+    { label: '04 Cloud & DevOps', items: [
+      { name: 'Azure', icon: 'azure' },
+      { name: 'GitHub Actions', icon: 'ghactions' },
       { name: 'Docker', icon: 'docker' },
       { name: 'Kubernetes', icon: 'kubernetes' },
-      { name: 'Azure', icon: 'azure' },
-      { name: 'Prometheus', icon: 'prometheus' },
     ] },
-    { label: '04 UI & Mobile', items: [
-      { name: 'React', icon: 'react' },
-      { name: 'React Native', icon: 'reactnative' },
-      { name: 'Expo', icon: 'expo' },
-      { name: 'Streamlit', icon: 'streamlit' },
-      { name: 'Jetpack Compose', icon: 'compose' },
-    ] },
-    { label: '05 Tooling', items: [
-      { name: 'Git', icon: 'git' },
-      { name: 'GitHub Actions', icon: 'ghactions' },
+    { label: '05 Testing & Observability', items: [
       { name: 'Locust', icon: 'locust' },
+      { name: 'Testcontainers', icon: 'docker' },
+      { name: 'Micrometer', icon: 'prometheus' },
+      { name: 'Prometheus', icon: 'prometheus' },
+      { name: 'Grafana', icon: 'prometheus' },
+      { name: 'Flower', icon: 'flower' },
     ] },
   ] as StackRow[],
   // footerTagline: 'A little corner on the Internet that speaks about me.',
-  resumeUrl: resumePdf,
-  resumeFileName: 'Shyam_Kumar_Reddy_Kalla_Resume.pdf',
+  resumeUrl: 'https://drive.google.com/file/d/1TW9TuPjiykS85xJTHygMa-Q9Ydhhsjx6/view?usp=sharing',
 
   writings: [
+    {
+      date: "23 Oct '26",
+      year: '2026',
+      readTime: '14 min',
+      title: 'Everyone Can Send an Email. Almost No One Can Tell You What Happened Next.',
+      url: 'https://medium.com/@jathinshyam/everyone-can-send-an-email-almost-no-one-can-tell-you-what-happened-next-a836393cd4a3',
+      excerpt:
+        'Building Pulse, a self-hosted notification service that treats delivery as an inspectable state machine.',
+    },
+    {
+      date: "21 Oct '26",
+      year: '2026',
+      readTime: '12 min',
+      title: 'Your Arch Install Is Quietly Filling Up. Here’s the Cleanup Script I Run Every Night',
+      url: 'https://medium.com/@jathinshyam/your-arch-install-is-quietly-filling-up-heres-the-cleanup-script-i-run-every-night-6dd94190f282',
+      excerpt:
+        'A hardened, concurrency-safe maintenance routine with flock, seven cleanup steps and one append-only log.',
+    },
     {
       date: "26 Aug '26",
       year: '2026',
@@ -145,6 +159,7 @@ export const content = {
         'A production-grade, horizontally scalable notification system on Django/DRF, Celery, Redis and PostgreSQL. Multi-channel delivery (email, SMS, push) with priority queues and exponential-backoff retries; sustained 15K+ jobs/min in Locust load tests. Idempotency keys, Redis rate limiting (10 req/min per user/channel) and dead-letter queues, with Kubernetes HPA scaling 2–10 replicas to hold a <1% error rate under 200+ concurrent users.',
       tags: ['Python', 'Django/DRF', 'Celery', 'Redis', 'PostgreSQL', 'Docker', 'Kubernetes', 'Prometheus'],
       repoUrl: 'https://github.com/JathinShyam/Pulse',
+      liveUrl: 'https://pulse-notification.vercel.app/',
     },
     {
       name: 'SmartMigrate',
@@ -159,6 +174,20 @@ export const content = {
         'An offline-first, four-language (Telugu, English, Hindi, Tamil) scripture app covering all 18 chapters and 19 topic categories, with streaks, saved verses and share cards — no backend, no account. Includes a rolling 7-day local-notification scheduler with tap-to-verse deep links and a native Android home-screen widget (Kotlin AppWidget with a JS bridge) showing a deterministic verse of the day, guarded by Jest catalog-integrity tests and a GitHub Actions release-APK pipeline.',
       tags: ['TypeScript', 'React Native', 'Expo', 'Android'],
       repoUrl: 'https://github.com/JathinShyam/BagavadGitaApp',
+    },
+    {
+      name: 'NexusLink',
+      description:
+        'A focused networking project for building reliable links between services and clients with a clean, observable developer workflow.',
+      tags: ['Python', 'Django', 'PostgreSQL', 'Docker'],
+      repoUrl: 'https://github.com/JathinShyam/NexusLink',
+    },
+    {
+      name: 'SentinelPay',
+      description:
+        'A payment platform built around dependable transaction handling, idempotent operations and clear service boundaries.',
+      tags: ['Java', 'Spring Boot', 'PostgreSQL', 'Kafka', 'Docker'],
+      repoUrl: 'https://github.com/JathinShyam/SentinelPay',
     },
     {
       name: 'Keyforge',
@@ -223,12 +252,11 @@ export const content = {
         org: 'AltiusHub',
         stack: 'Python, Django, TypeScript, React, PostgreSQL, Celery, Azure',
         points: [
-          'Architected microservice-based track-and-trace compliance from scratch for 6 markets (Saudi Arabia, Indonesia, Azerbaijan, Egypt, UAE, Bahrain), automating 26 regulatory report types per country and shipping one country per sprint for 4 enterprise customers.',
-          'Led a 3-engineer pod (code reviews, mentoring), consistently shipping 3+ features per three-week release.',
+          'Architected a microservice track-and-trace compliance platform from scratch across 6 markets (Saudi Arabia, Indonesia, Azerbaijan, Egypt, UAE, Bahrain), automating 26 regulatory report types per country for 4 enterprise customers.',
+          'Executed zero-downtime migration from 1 to 2 under 500ms (~60%) and improved query performance by ~40% across large PostgreSQL datasets via logical replication, cutting latency from 1.2s to under 500ms.',
           'Integrated the platform with Microsoft Dynamics 365 ERP, syncing 5K records/day and saving ~2 hrs/day of manual work for 3 enterprise clients.',
-          'Built Smart Migrate, a Django management command that resolves cross-environment migration drift in GitHub Actions deployments (21 edge cases), cutting DB migration time by 95%.',
-          'Cut p95 query latency from 3s to 2.4s on a 100M-row PostgreSQL table via partitioning, targeted indexes and ORM query tuning.',
-          'Built serial-number scan pre-validation that blocks invalid traceability events upstream, cutting operator rework by 60%.',
+          'Built long-running processing workflows with request-response cycle to Celery and RabbitMQ background workers (retries, distributed execution), improving processing throughput by 35%.',
+          'Created a Django management command that fixes migration drift across environments in GitHub Actions deployments across 21 edge cases, cutting migration time from 2 hrs to 15 mins.',
         ],
       },
       {
@@ -237,8 +265,7 @@ export const content = {
         org: 'Rockfort Labs',
         stack: 'Python, Deep Learning',
         points: [
-          'Built predictive-maintenance anomaly-detection models for industrial boilers on real-time IIoT sensor streams, benchmarking 8 approaches and ranking them by precision/recall tradeoff.',
-          'Productionized evaluation workflows (train/validation splits, thresholding, error analysis) to cut false alarms, reaching 98% accuracy per boiler on a held-out set.',
+          'Built anomaly-detection models for industrial-boiler predictive maintenance on real-time IIoT sensor streams, benchmarking 8 approaches and reaching 98% accuracy per boiler on held-out data.',
         ],
       },
     ],
