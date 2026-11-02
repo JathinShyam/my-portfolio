@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { Check, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Hero from '@/components/Hero';
 import SocialRow from '@/components/SocialRow';
@@ -12,7 +10,6 @@ import Separator from '@/components/Separator';
 import content from '@/data/content';
 
 export default function Home() {
-  const [copied, setCopied] = useState(false);
   const latestPosts = content.writings.slice(0, 3);
   const experienceItems = content.resume.experience;
 
@@ -26,17 +23,6 @@ export default function Home() {
         <div className="hero-text mt-10" style={{ animationDelay: '160ms' }}>
           <div className="mb-4 text-[12px] font-bold uppercase tracking-[0.15em] text-[#5e5852] dark:text-[#c9c3ba]">Find me</div>
           <SocialRow />
-          <button
-            onClick={() => {
-              navigator.clipboard.writeText('heyshyam.r@gmail.com');
-              setCopied(true);
-              window.setTimeout(() => setCopied(false), 1800);
-            }}
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#2563eb] px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-[#1d4ed8] focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-2 dark:bg-[#3b82f6] dark:hover:bg-[#60a5fa]"
-          >
-            {copied ? <Check size={15} /> : <Mail size={15} />}
-            {copied ? 'Email copied' : 'Email me'}
-          </button>
         </div>
       </div>
 
