@@ -7,6 +7,7 @@ export default {
       fontFamily: {
         sans: ['"DM Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         serif: ['Newsreader', 'ui-serif', 'Georgia', 'serif'],
+        handwriting: ['Caveat', 'cursive'],
         mono: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
     },

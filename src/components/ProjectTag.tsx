@@ -1,5 +1,7 @@
 import {
   siPython,
+  siGo,
+  siClickhouse,
   siDjango,
   siCelery,
   siRedis,
@@ -25,6 +27,8 @@ import { BrainCircuit, Braces, Cloud, Container, Database, Gauge, Layers, type L
 
 const BRAND: Record<string, string> = {
   Python: siPython.path,
+  Go: siGo.path,
+  ClickHouse: siClickhouse.path,
   Django: siDjango.path,
   'Django/DRF': siDjango.path,
   Celery: siCelery.path,

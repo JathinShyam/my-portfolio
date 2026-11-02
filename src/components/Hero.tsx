@@ -65,7 +65,7 @@ export default function Hero() {
           )}
         </h1>
         <div className="mt-1 text-[14px] font-medium text-[#5e5852] dark:text-[#c9c3ba]">
-          {content.tagline} · LeetCode Knight (top 5%)
+          {content.tagline} · {content.achievement}
         </div>
         <p className="mt-4 whitespace-pre-line text-center text-[13.5px] leading-[1.6] text-[#5e5852] dark:text-[#c9c3ba] md:max-w-[420px] md:text-left md:text-[14px]">
           {content.bio}

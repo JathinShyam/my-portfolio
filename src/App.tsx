@@ -1,3 +1,4 @@
+import { useEffect, type ReactNode } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
@@ -14,6 +15,13 @@ import MangaPage from '@/pages/MangaPage';
 import Anime from '@/pages/Anime';
 import NotFound from '@/pages/NotFound';
 
+function PageTitle({ title, children }: { title: string; children: ReactNode }) {
+  useEffect(() => {
+    document.title = `${title} — Shyam Kumar Reddy Kalla`;
+  }, [title]);
+  return children;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -23,16 +31,16 @@ export default function App() {
         <Nav />
         <main className="flex-1">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs/:slug" element={<BlogPost />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/books" element={<BooksPage />} />
-            <Route path="/manga" element={<MangaPage />} />
-            <Route path="/anime" element={<Anime />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<PageTitle title="Home"><Home /></PageTitle>} />
+            <Route path="/blogs" element={<PageTitle title="Writings"><Blogs /></PageTitle>} />
+            <Route path="/blogs/:slug" element={<PageTitle title="Writing"><BlogPost /></PageTitle>} />
+            <Route path="/projects" element={<PageTitle title="Projects"><Projects /></PageTitle>} />
+            <Route path="/experience" element={<PageTitle title="Work"><Experience /></PageTitle>} />
+            <Route path="/resume" element={<PageTitle title="Resume"><Resume /></PageTitle>} />
+            <Route path="/books" element={<PageTitle title="Books"><BooksPage /></PageTitle>} />
+            <Route path="/manga" element={<PageTitle title="Manga"><MangaPage /></PageTitle>} />
+            <Route path="/anime" element={<PageTitle title="Anime"><Anime /></PageTitle>} />
+            <Route path="*" element={<PageTitle title="Not Found"><NotFound /></PageTitle>} />
           </Routes>
         </main>
         <Footer />

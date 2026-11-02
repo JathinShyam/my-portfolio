@@ -65,7 +65,7 @@ export default function Footer() {
             <span className="inline-flex items-center gap-1.5"><Clock3 size={13} /> IST (UTC+5:30) {time}</span>
           </div>
           <div className="flex items-center gap-4">
-            <a href={content.links.profile} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 transition-colors hover:text-[#2563eb] dark:hover:text-[#93c5fd]">Source on GitHub <ArrowUpRight size={13} /></a>
+            <a href={content.links.source} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 transition-colors hover:text-[#2563eb] dark:hover:text-[#93c5fd]">Source on GitHub <ArrowUpRight size={13} /></a>
             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="transition-colors hover:text-[#2563eb] dark:hover:text-[#93c5fd]">Back to top</button>
           </div>
         </div>
