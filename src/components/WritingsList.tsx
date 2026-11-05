@@ -2,38 +2,43 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import type { Writing } from '@/data/content';
 
+const rowClass =
+  'group flex items-start gap-4 border-b border-[#ece7e1] py-5 last:border-b-0 dark:border-[#2a2620] sm:gap-6';
+
 function Row({ post }: { post: Writing }) {
   const inner = (
     <>
-      <span className="order-1 text-[12.5px] tabular-nums text-[#847e78] dark:text-[#9a948b] sm:order-none">
-        {post.date}
-      </span>
-      <span className="order-3 col-span-2 font-serif text-[17px] leading-snug text-[#1a1a1a] underline decoration-transparent underline-offset-[3px] transition-colors duration-200 group-hover:decoration-current dark:text-[#f2efe9] sm:order-none sm:col-span-1">
-        {post.title}
-      </span>
-      <span className="order-2 text-right text-[12.5px] text-[#6f6a63] dark:text-[#8a847b] sm:order-none">
-        {post.readTime}
+      {post.image && (
+        <img
+          src={post.image}
+          alt=""
+          loading="lazy"
+          className="h-[84px] w-[120px] shrink-0 rounded-md bg-[#f4f1ec] object-cover transition-transform duration-500 group-hover:scale-[1.03] dark:bg-[#1c1913] sm:h-[100px] sm:w-[160px]"
+        />
+      )}
+      <span className="flex min-w-0 flex-col gap-1.5">
+        <span className="font-serif text-[17px] leading-snug text-[#1a1a1a] underline decoration-transparent underline-offset-[3px] transition-colors duration-200 group-hover:decoration-current sm:text-[19px] dark:text-[#f2efe9]">
+          {post.title}
+        </span>
+        {post.excerpt && (
+          <span className="text-[14px] leading-relaxed text-[#5e5852] dark:text-[#b3ada4]">{post.excerpt}</span>
+        )}
+        <span className="text-[12.5px] tabular-nums text-[#847e78] dark:text-[#9a948b]">
+          {post.date} · {post.readTime}
+        </span>
       </span>
     </>
   );
 
   if (post.url) {
     return (
-      <a
-        href={post.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group grid grid-cols-[1fr_auto] items-baseline gap-x-4 gap-y-1 border-b border-[#ece7e1] py-3.5 last:border-b-0 dark:border-[#2a2620] sm:grid-cols-[6.75rem_minmax(0,1fr)_4.25rem] sm:gap-x-6"
-      >
+      <a href={post.url} target="_blank" rel="noopener noreferrer" className={rowClass}>
         {inner}
       </a>
     );
   }
   return (
-    <Link
-      to={`/blogs/${post.slug}`}
-      className="group grid grid-cols-[1fr_auto] items-baseline gap-x-4 gap-y-1 border-b border-[#ece7e1] py-3.5 last:border-b-0 dark:border-[#2a2620] sm:grid-cols-[6.75rem_minmax(0,1fr)_4.25rem] sm:gap-x-6"
-    >
+    <Link to={`/blogs/${post.slug}`} className={rowClass}>
       {inner}
     </Link>
   );

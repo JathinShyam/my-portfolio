@@ -11,6 +11,7 @@ export type Writing = {
   url?: string;
   slug?: string;
   excerpt?: string;
+  image?: string;
   blocks?: WritingBlock[];
 };
 
@@ -118,6 +119,7 @@ export const content = {
       readTime: '14 min',
       title: 'Everyone Can Send an Email. Almost No One Can Tell You What Happened Next.',
       url: 'https://medium.com/@jathinshyam/everyone-can-send-an-email-almost-no-one-can-tell-you-what-happened-next-a836393cd4a3',
+      image: 'https://images.pexels.com/photos/5426403/pexels-photo-5426403.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
       excerpt:
         'Building Pulse, a self-hosted notification service that treats delivery as an inspectable state machine.',
     },
@@ -127,6 +129,7 @@ export const content = {
       readTime: '12 min',
       title: 'Your Arch Install Is Quietly Filling Up. Here’s the Cleanup Script I Run Every Night',
       url: 'https://medium.com/@jathinshyam/your-arch-install-is-quietly-filling-up-heres-the-cleanup-script-i-run-every-night-6dd94190f282',
+      image: 'https://images.pexels.com/photos/36571389/pexels-photo-36571389.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
       excerpt:
         'A hardened, concurrency-safe maintenance routine with flock, seven cleanup steps and one append-only log.',
     },
@@ -136,7 +139,7 @@ export const content = {
       readTime: '8 min',
       title: "I Wanted My OnePlus Nord 5 Side Button to Do My Shortcuts — Here's What It Took",
       url: 'https://medium.com/@jathinshyam/i-wanted-my-oneplus-nord-5-side-button-to-do-my-shortcuts-heres-what-it-took-506b6cb53f25',
-      
+      image: 'https://images.pexels.com/photos/13657928/pexels-photo-13657928.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
       excerpt:
         'How OxygenOS swallows the Plus Key, why a normal accessibility remapper cannot see it, and what it took to build one that does.',
     },
@@ -146,6 +149,7 @@ export const content = {
       readTime: '6 min',
       title: 'The Invisible Auction: How Third-Party Ads Power (and Personalize) Your Apps and Websites',
       url: 'https://medium.com/@jathinshyam/the-invisible-auction-how-third-party-ads-power-and-personalize-your-apps-and-websites-dc5ed7b3cbc4',
+      image: 'https://images.pexels.com/photos/34069/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=650&w=940',
       excerpt:
         'A plain-English look at real-time bidding, what data actually leaves your device, and why the same app shows different ads to different people.',
     },
