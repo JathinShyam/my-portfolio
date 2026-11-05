@@ -87,27 +87,21 @@ function ChipIcon({ id, size = 18 }: { id: string; size?: number }) {
 }
 
 export function StackSection() {
-  const [selected, setSelected] = useState<string[]>([content.stack[0].label]);
+  const [selected, setSelected] = useState(content.stack[0].label);
 
-  const toggle = (label: string) => {
-    setSelected((current) =>
-      current.includes(label) ? current.filter((item) => item !== label) : [...current, label],
-    );
-  };
-
-  const visibleRows = content.stack.filter((row) => selected.includes(row.label));
+  const visibleRow = content.stack.find((row) => row.label === selected) ?? content.stack[0];
 
   return (
     <section id="stack" className="flex flex-col gap-6">
       <div role="group" aria-label="Skill categories" className="flex flex-wrap gap-2">
         {content.stack.map((row) => {
-          const active = selected.includes(row.label);
+          const active = row.label === visibleRow.label;
           return (
             <button
               key={row.label}
               type="button"
               aria-pressed={active}
-              onClick={() => toggle(row.label)}
+              onClick={() => setSelected(row.label)}
               className={`rounded-full border px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#151210] ${
                 active
                   ? 'border-[#2563eb] bg-[#2563eb] text-white shadow-sm dark:border-[#3b82f6] dark:bg-[#3b82f6]'
@@ -120,30 +114,17 @@ export function StackSection() {
         })}
       </div>
 
-      {visibleRows.length === 0 ? (
-        <p className="text-[14px] text-[#5e5852] dark:text-[#c9c3ba]">Select a category to see the tools I use.</p>
-      ) : (
-        <div className="flex flex-col gap-5">
-          {visibleRows.map((row) => (
-            <div key={row.label} className="flex flex-col gap-2.5">
-              <h3 className="font-mono text-[12px] uppercase tracking-[0.15em] text-[#5e5852] dark:text-[#c9c3ba]">
-                {row.label}
-              </h3>
-              <ul className="flex flex-wrap gap-2">
-                {row.items.map((item) => (
-                  <li
-                    key={item.name}
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-[#e8e4de] bg-white px-2.5 py-1 text-[13px] text-[#3a3530] shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors duration-200 hover:border-[#2563eb] hover:text-[#2563eb] dark:border-[#332f28] dark:bg-[#1c1913] dark:text-[#d7d2ca] dark:hover:border-[#93c5fd] dark:hover:text-[#93c5fd]"
-                  >
-                    <ChipIcon id={item.icon} size={14} />
-                    <span className="font-medium">{item.name}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      )}
+      <ul key={visibleRow.label} className="flex flex-wrap gap-2">
+        {visibleRow.items.map((item) => (
+          <li
+            key={item.name}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-[#e8e4de] bg-white px-2.5 py-1 text-[13px] text-[#3a3530] shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors duration-200 hover:border-[#2563eb] hover:text-[#2563eb] dark:border-[#332f28] dark:bg-[#1c1913] dark:text-[#d7d2ca] dark:hover:border-[#93c5fd] dark:hover:text-[#93c5fd]"
+          >
+            <ChipIcon id={item.icon} size={14} />
+            <span className="font-medium">{item.name}</span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
