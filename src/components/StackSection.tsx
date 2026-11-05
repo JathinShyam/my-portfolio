@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   siPython,
   siGo,
@@ -86,34 +87,63 @@ function ChipIcon({ id, size = 18 }: { id: string; size?: number }) {
 }
 
 export function StackSection() {
-  return (
-    <section id="stack">
-      <div>
-        {content.stack.map((row) => (
-          <div
-            key={row.label}
-            className="flex flex-col gap-2.5 border-b border-[#ece7e1] py-3.5 last:border-b-0 sm:flex-row sm:items-center sm:gap-6 dark:border-[#2a2620]"
-          >
-            <span className="w-36 shrink-0 font-mono text-xs tracking-wider text-[#847e78] dark:text-[#9a948b]">
-              {row.label}
-            </span>
+  const [selected, setSelected] = useState<string[]>([content.stack[0].label]);
 
-            <div className="flex flex-1 flex-wrap gap-1.5">
-              {row.items.map((item) => (
-                <div
-                  key={item.name}
-                  aria-label={item.name}
-                  tabIndex={0}
-                  className="inline-flex items-center gap-1 rounded-md border border-dashed border-[#e8e4de] px-2 py-0.5 text-[11.5px] text-[#7a746e] transition-colors duration-200 hover:border-[#d8d2cb] hover:text-[#111] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/10 dark:border-[#2e2a24] dark:text-[#9d978e] dark:hover:border-[#4a453b] dark:hover:text-[#f2efe9] dark:focus-visible:ring-white/10"
-                >
-                  <ChipIcon id={item.icon} size={13} />
-                  <span className="font-medium">{item.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+  const toggle = (label: string) => {
+    setSelected((current) =>
+      current.includes(label) ? current.filter((item) => item !== label) : [...current, label],
+    );
+  };
+
+  const visibleRows = content.stack.filter((row) => selected.includes(row.label));
+
+  return (
+    <section id="stack" className="flex flex-col gap-6">
+      <div role="group" aria-label="Skill categories" className="flex flex-wrap gap-2">
+        {content.stack.map((row) => {
+          const active = selected.includes(row.label);
+          return (
+            <button
+              key={row.label}
+              type="button"
+              aria-pressed={active}
+              onClick={() => toggle(row.label)}
+              className={`rounded-full border px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#151210] ${
+                active
+                  ? 'border-[#2563eb] bg-[#2563eb] text-white shadow-sm dark:border-[#3b82f6] dark:bg-[#3b82f6]'
+                  : 'border-[#d8d2cb] bg-white text-[#3a3530] hover:border-[#2563eb] hover:text-[#2563eb] dark:border-[#3a352c] dark:bg-[#1c1913] dark:text-[#d7d2ca] dark:hover:border-[#93c5fd] dark:hover:text-[#93c5fd]'
+              }`}
+            >
+              {row.label}
+            </button>
+          );
+        })}
       </div>
+
+      {visibleRows.length === 0 ? (
+        <p className="text-[14px] text-[#5e5852] dark:text-[#c9c3ba]">Select a category to see the tools I use.</p>
+      ) : (
+        <div className="flex flex-col gap-5">
+          {visibleRows.map((row) => (
+            <div key={row.label} className="flex flex-col gap-2.5">
+              <h3 className="font-mono text-[12px] uppercase tracking-[0.15em] text-[#5e5852] dark:text-[#c9c3ba]">
+                {row.label}
+              </h3>
+              <ul className="flex flex-wrap gap-2">
+                {row.items.map((item) => (
+                  <li
+                    key={item.name}
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-[#e8e4de] bg-white px-2.5 py-1 text-[13px] text-[#3a3530] shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors duration-200 hover:border-[#2563eb] hover:text-[#2563eb] dark:border-[#332f28] dark:bg-[#1c1913] dark:text-[#d7d2ca] dark:hover:border-[#93c5fd] dark:hover:text-[#93c5fd]"
+                  >
+                    <ChipIcon id={item.icon} size={14} />
+                    <span className="font-medium">{item.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
