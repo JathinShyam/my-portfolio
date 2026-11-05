@@ -102,10 +102,10 @@ export function StackSection() {
               type="button"
               aria-pressed={active}
               onClick={() => setSelected(row.label)}
-              className={`rounded-full border px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#151210] ${
+              className={`border px-4 py-2 text-[13px] font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#151210] ${
                 active
-                  ? 'border-[#2563eb] bg-[#2563eb] text-white shadow-sm dark:border-[#3b82f6] dark:bg-[#3b82f6]'
-                  : 'border-[#d8d2cb] bg-white text-[#3a3530] hover:border-[#2563eb] hover:text-[#2563eb] dark:border-[#3a352c] dark:bg-[#1c1913] dark:text-[#d7d2ca] dark:hover:border-[#93c5fd] dark:hover:text-[#93c5fd]'
+                  ? 'border-[#18181b] bg-[#18181b] text-white dark:border-[#fafafa] dark:bg-[#fafafa] dark:text-[#18181b]'
+                  : 'border-[#d4d4d8] bg-white text-[#3f3f46] hover:border-[#2563eb] hover:text-[#2563eb] dark:border-[#3f3f46] dark:bg-[#1c1c1f] dark:text-[#d4d4d8] dark:hover:border-[#60a5fa] dark:hover:text-[#60a5fa]'
               }`}
             >
               {row.label}
@@ -118,7 +118,7 @@ export function StackSection() {
         {visibleRow.items.map((item) => (
           <li
             key={item.name}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-[#e8e4de] bg-white px-2.5 py-1 text-[13px] text-[#3a3530] shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors duration-200 hover:border-[#2563eb] hover:text-[#2563eb] dark:border-[#332f28] dark:bg-[#1c1913] dark:text-[#d7d2ca] dark:hover:border-[#93c5fd] dark:hover:text-[#93c5fd]"
+            className="inline-flex items-center gap-2 border border-[#e4e4e7] bg-[#f4f4f5] px-3 py-1.5 text-[13px] text-[#27272a] transition-colors duration-200 hover:border-[#2563eb] hover:text-[#2563eb] dark:border-[#27272a] dark:bg-[#18181b] dark:text-[#e4e4e7] dark:hover:border-[#60a5fa] dark:hover:text-[#60a5fa]"
           >
             <ChipIcon id={item.icon} size={14} />
             <span className="font-medium">{item.name}</span>
